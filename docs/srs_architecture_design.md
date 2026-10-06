@@ -248,3 +248,29 @@ $env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
 # 4. Verify the built artifact
 Get-Item target\business-licence-renewal.war
 ```
+
+
+## 7. Current implementation notes — licence workflow
+
+The diagrams above describe the proposed design. The implemented local MVP uses
+`app_users` as a identity table seeded from the existing demo-user properties;
+password hashes stay in `demo-users.properties` for the authentication stage.
+`licence_records` references the owner and final reviewer, and `audit_remarks`
+stores the decision in the same transaction as its status change. It is not a
+registration system yet.
+
+The implemented lifecycle is SUBMITTED → UNDER_REVIEW → APPROVED/REJECTED, with
+approval/rejection also permitted directly from SUBMITTED. Owners can update or
+delete only SUBMITTED records. Every mutation uses a POST form with CSRF checks.
+
+Additional implemented routes (all take an `id` query/form parameter):
+
+| Method | Route | Role | Purpose |
+|---|---|---|---|
+| GET / POST | `/owner/records/edit` | Owner | Edit an owned submitted record |
+| POST | `/owner/records/delete` | Owner | Delete an owned submitted record |
+| POST | `/officer/records/start` | Officer | Mark a submitted record under review |
+
+Contact phone and email are required. Search uses the `q` parameter and optional
+`status` filter. Metrics count all records visible to the current role, regardless
+of the current table filter. Pending includes SUBMITTED and UNDER_REVIEW.

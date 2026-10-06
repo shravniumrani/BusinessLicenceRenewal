@@ -68,3 +68,8 @@ $RECYCLE.BIN/
 scratch/
 temp/
 tmp/
+
+# Embedded database files (data is normally outside the repository)
+*.mv.db
+*.trace.db
+BusinessLicenceRenewal-data/

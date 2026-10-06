@@ -178,7 +178,7 @@ erDiagram
 1. **`USERS` Table**:
    - `id`: Primary key (Integer, Auto-increment).
    - `username`: Unique login handle (VARCHAR(50)).
-   - `password_hash`: Salted SHA-256 / BCrypt hash string.
+   - `password_hash`: Salted PBKDF2-HMAC-SHA256 hash string.
    - `full_name`: Real name of the individual or authorized officer (VARCHAR(100)).
    - `email`: Contact email address (VARCHAR(120)).
    - `role`: Role discriminator (`BUSINESS_OWNER` or `LICENSING_OFFICER`).
@@ -213,7 +213,7 @@ erDiagram
 | `GET` | `/health` | Public | JSON health-check endpoint for monitoring and Ansible verification. |
 | `GET` | `/login` | Public | Renders user login form. |
 | `POST` | `/login` | Public | Authenticates credentials and starts user session. |
-| `GET` | `/logout` | Authenticated | Terminates active session and invalidates cookie. |
+| `POST` | `/logout` | Authenticated | Terminates active session and invalidates cookie. |
 | `GET` | `/dashboard` | Authenticated | Redirects to role-specific dashboard based on session. |
 | `GET` | `/owner/dashboard` | `BUSINESS_OWNER` | Displays business owner's personal applications table and search. |
 | `GET` | `/owner/renew` | `BUSINESS_OWNER` | Renders application form for new licence renewal. |

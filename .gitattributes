@@ -1,0 +1,8 @@
+* text=auto
+*.java text eol=lf
+*.jsp text eol=lf
+*.md text eol=lf
+*.xml text eol=lf
+mvnw text eol=lf
+mvnwDebug text eol=lf
+*.cmd text eol=crlf

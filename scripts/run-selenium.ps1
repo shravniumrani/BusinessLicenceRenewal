@@ -125,6 +125,21 @@ try {
         failsafe:integration-test failsafe:verify
 
     if ($LASTEXITCODE -ne 0) {
+        $server.Refresh()
+        Write-Host "Tomcat exited: $($server.HasExited)"
+
+        if ($server.HasExited) {
+            Write-Host "Tomcat exit code: $($server.ExitCode)"
+        }
+
+        try {
+            $check = Invoke-RestMethod `
+                -Uri "$baseUrl/health" -TimeoutSec 5
+            Write-Host "Health after test failure: $($check.status)"
+        } catch {
+            Write-Host "Health check failed: $($_.Exception.Message)"
+        }
+
         throw 'Selenium tests failed.'
     }
 

@@ -10,6 +10,7 @@ public final class AuthFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
+        request.setCharacterEncoding("UTF-8");
         response.setHeader("Cache-Control", "no-store");
         HttpSession session = request.getSession(false);
         User user = session == null ? null : (User) session.getAttribute("currentUser");

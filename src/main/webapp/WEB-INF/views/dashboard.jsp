@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Workspace | Business Licence Renewal</title><link rel="stylesheet" href="${pageContext.request.contextPath}/css/auth.css"></head>
-<body><main class="card"><p class="eyebrow"><c:out value="${roleLabel}"/> WORKSPACE</p>
-<h1 id="welcome-name">Welcome, <c:out value="${sessionScope.currentUser.fullName}"/></h1>
+<title>Business Licence Renewal</title><link rel="stylesheet" href="${pageContext.request.contextPath}/css/workflow.css"></head><body>
+<header><a class="brand" href="${pageContext.request.contextPath}/dashboard">Business Licence Renewal</a><form method="post" action="${pageContext.request.contextPath}/logout"><input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}"><button id="logout-button" class="secondary" type="submit">Sign out</button></form></header>
+<main>
+<p class="eyebrow"><c:out value="${roleLabel}"/> WORKSPACE</p><h1 id="welcome-name">Welcome, <c:out value="${sessionScope.currentUser.fullName}"/></h1>
 <p id="user-role">Role: <c:out value="${sessionScope.currentUser.role}"/></p>
-<p>Your account is signed in. Licence application features will be added in the next project stage.</p>
-<form method="post" action="${pageContext.request.contextPath}/logout"><input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}">
-<button id="logout-button" type="submit">Sign out</button></form></main></body></html>
+<c:if test="${param.result == 'deleted'}"><p class="notice" role="status">Submitted application deleted.</p></c:if>
+<div class="metrics"><article>Total applications<strong id="total-count"><c:out value="${summary.TOTAL}"/></strong></article><article>Pending review<strong id="pending-count"><c:out value="${summary.PENDING}"/></strong></article><article>Approved<strong id="approved-count"><c:out value="${summary.APPROVED}"/></strong></article><article>Rejected<strong id="rejected-count"><c:out value="${summary.REJECTED}"/></strong></article></div>
+<section class="panel"><div class="section-heading"><h2><c:choose><c:when test="${owner}">Your applications</c:when><c:otherwise>Officer review queue</c:otherwise></c:choose></h2><c:if test="${owner}"><a class="button" id="new-application" href="${pageContext.request.contextPath}/owner/renew">New renewal application</a></c:if></div>
+<form class="search" method="get"><label>Search<input id="search-query" name="q" maxlength="100" placeholder="Business, registration number or status" value="<c:out value='${param.q}'/>"></label><label>Status<select id="status-filter" name="status"><option value="">All statuses</option><c:forTokens items="SUBMITTED,UNDER_REVIEW,APPROVED,REJECTED" delims="," var="status"><option value="${status}" <c:if test="${param.status == status}">selected</c:if>><c:out value="${status}"/></option></c:forTokens></select></label><button id="search-button" type="submit">Search</button><a href="${pageContext.request.contextPath}/dashboard">Clear</a></form>
+<div class="table-wrap"><table id="applications-table"><thead><tr><th>Tracking ID</th><th>Business / registration</th><c:if test="${!owner}"><th>Applicant</th></c:if><th>Expiry date</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+<c:forEach items="${applications}" var="app"><tr data-application-id="${app.id}"><td>APP-<c:out value="${app.id}"/></td><td><strong><c:out value="${app.businessName}"/></strong><br><c:out value="${app.registrationNumber}"/></td><c:if test="${!owner}"><td><c:out value="${app.ownerName}"/></td></c:if><td><c:out value="${app.expiryDate}"/></td><td><span class="status"><c:out value="${app.status}"/></span></td><td><c:choose><c:when test="${owner}"><a href="${pageContext.request.contextPath}/owner/records/view?id=${app.id}">View</a><c:if test="${app.editable}"> · <a href="${pageContext.request.contextPath}/owner/records/edit?id=${app.id}">Edit</a></c:if></c:when><c:otherwise><a href="${pageContext.request.contextPath}/officer/records/review?id=${app.id}">Review</a></c:otherwise></c:choose></td></tr></c:forEach>
+</tbody></table></div><c:if test="${empty applications}"><p id="empty-applications">No applications match this search.</p></c:if>
+</section><p class="muted">Pending review includes submitted applications and applications under review.</p></main></body></html>

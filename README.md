@@ -7,7 +7,7 @@
 
 An enterprise-grade web application and end-to-end DevOps automation pipeline for municipal business operating licence renewals.
 
-This repository represents the **Stage 1: Initial Skeleton & Planning** baseline for the individual college DevOps assignment: **Jenkins Deployment for a Business Licence Renewal System**.
+This repository contains the planning baseline, merged authentication feature, and licence workflow implementation awaiting local verification for the individual college DevOps assignment: **Jenkins Deployment for a Business Licence Renewal System**.
 
 ---
 
@@ -29,8 +29,8 @@ The Business Licence Renewal System is designed to replace manual, paper-based, 
 
 | Stage | Focus Area | Deliverables | Status |
 |---|---|---|---|
-| **Stage 1 (Current)** | Architecture & Skeleton | Requirements checklist, problem statement, backlog, SRS, branching policy, Maven wrapper, Java 21 WAR skeleton, health endpoint, README. | **COMPLETED** |
-| **Stage 2** | Core MVP Features | First feature branch (`feature/auth-and-models`), PR & merge, second feature branch (`feature/licence-crud-workflow`), merge conflict resolution, release tag `v1.0.0`. | Planned |
+| **Stage 1** | Architecture & Skeleton | Requirements checklist, problem statement, backlog, SRS, branching policy, Maven wrapper, Java 21 WAR skeleton, health endpoint, README. | **COMPLETED** |
+| **Stage 2** | Core MVP Features | First feature branch (`feature/auth-and-models`), PR & merge, second feature branch (`feature/licence-workflow`), merge conflict resolution, release tag `v1.0.0`. | In progress: authentication merged; workflow build and Tomcat verification pending |
 | **Stage 3** | Continuous Integration | Jenkins CI server, commit trigger/polling, declarative `Jenkinsfile` with environment parameters, automated WAR packaging and Tomcat deployment. | Planned |
 | **Stage 4** | Automated Testing & Gates | 3–5 Selenium end-to-end journeys, screenshot capture on failure, Surefire reports, quality gate blocking deployment on defect injection. | Planned |
 | **Stage 5** | Containerization | `Dockerfile`, container build, port mapping `8080:8080`, lifecycle management (logs, stop, restart, rm), Docker registry publishing. | Planned |
@@ -128,4 +128,26 @@ Once the `Dockerfile` is added in Stage 5, the application will be containerized
 
 ## 6. Scope Approval Status
 
-> **Notice**: As per academic project guidelines, the initial scope definition in [`docs/problem_statement_and_scope.md`](docs/problem_statement_and_scope.md) is marked as **PENDING TEACHER REVIEW**. Feature branches will be created and merged sequentially starting in Stage 2.
+> **Notice**: As per academic project guidelines, the initial scope definition in [`docs/problem_statement_and_scope.md`](docs/problem_statement_and_scope.md) is marked as **PENDING TEACHER REVIEW**. The authentication feature has been merged into development. The licence workflow is the next feature branch; instructor scope approval remains pending.
+
+
+## Licence workflow (feature/licence-workflow)
+
+After login, owners can create, search, view, edit and delete their own submitted
+renewal applications. Officers can search all applications, mark a submission
+under review, and approve or reject it with mandatory remarks. Decisions are
+final; reviewed records cannot be edited or deleted by owners.
+
+Build with Java 21 using `./mvnw clean package` (Windows: `.\mvnw.cmd clean package`).
+The WAR includes H2 automatically; no separate database installation is needed.
+The first build downloads the added H2 dependency.
+
+Applications are stored by default in `${user.home}/BusinessLicenceRenewal-data`,
+outside the source folder and Tomcat deployment. Keep this folder to retain data.
+For a different directory set `LICENCE_DATA_DIR` before starting Tomcat, or use
+`-Dlicence.data.dir=/absolute/path` in JVM options. Stop Tomcat before backing up
+or moving the database. Run one application instance per file database.
+
+See [Licence workflow guide](docs/licence_workflow.md) for test cases, routes,
+validation and database configuration. Demo login accounts remain unchanged;
+user registration, Jenkins, Selenium, Docker and Ansible are subsequent stages.

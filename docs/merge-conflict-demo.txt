@@ -1,1 +1,1 @@
-Deployment target: local Tomcat
+Deployment targets: local Tomcat for development; Docker container for deployment

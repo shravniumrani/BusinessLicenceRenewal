@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$TomcatHome = "C:\Users\SHRAVNI\Documents\apache-tomcat-10.1.60",
     [string]$JavaHome = "C:\Program Files\Java\jdk-21"
 )
@@ -85,7 +85,7 @@ $exitCode = 1
 $baseUrl = 'http://127.0.0.1:8082/business-licence-renewal'
 
 try {
-    $server = Start-Process -FilePath $java `
+    $server = Start-Process -NoNewWindow -FilePath $java `
         -ArgumentList $javaArguments `
         -RedirectStandardOutput "$base\logs\stdout.log" `
         -RedirectStandardError "$base\logs\stderr.log" `

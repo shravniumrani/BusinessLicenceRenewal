@@ -82,6 +82,26 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build') {
+            steps {
+                powershell '''
+                    $ErrorActionPreference = 'Stop'
+                    $docker = Join-Path $env:ProgramFiles 'Docker/Docker/resources/bin/docker.exe'
+
+                    & $docker build -t "business-licence-renewal:ci-$env:BUILD_NUMBER" .
+                    if ($LASTEXITCODE -ne 0) {
+                        throw 'Docker image build failed.'
+                    }
+                '''
+            }
+        }
+                stage('Deploy to Docker') {
+            steps {
+                bat '''
+                    powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-docker.ps1 -Image business-licence-renewal:ci-%BUILD_NUMBER%
+                '''
+            }
+        }
 stage('Deploy to Tomcat') {
             when {
                 expression { params.DEPLOY_TO_TOMCAT }
@@ -139,3 +159,5 @@ stage('Deploy to Tomcat') {
         }
     }
 }
+
+

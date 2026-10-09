@@ -63,7 +63,26 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
+                 stage('Selenium Tests') {
+            steps {
+                bat '''
+                    powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\run-selenium.ps1 -TomcatHome "%TOMCAT_HOME%" -JavaHome "%JAVA_HOME%"
+                '''
+            }
+            post {
+                always {
+                    junit(
+                        testResults: 'target/failsafe-reports/TEST-*.xml',
+                        allowEmptyResults: true
+                    )
+                    archiveArtifacts(
+                        artifacts: 'target/selenium-screenshots/*.png,target/selenium-tomcat-*/logs/**',
+                        allowEmptyArchive: true
+                    )
+                }
+            }
+        }
+stage('Deploy to Tomcat') {
             when {
                 expression { params.DEPLOY_TO_TOMCAT }
             }

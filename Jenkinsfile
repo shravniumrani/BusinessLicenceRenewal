@@ -95,7 +95,14 @@ pipeline {
                 '''
             }
         }
-        stage('Deploy to Tomcat') {
+                stage('Deploy to Docker') {
+            steps {
+                bat '''
+                    powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-docker.ps1 -Image business-licence-renewal:ci-%BUILD_NUMBER%
+                '''
+            }
+        }
+stage('Deploy to Tomcat') {
             when {
                 expression { params.DEPLOY_TO_TOMCAT }
             }
@@ -152,4 +159,5 @@ pipeline {
         }
     }
 }
+
 

@@ -82,7 +82,20 @@ pipeline {
                 }
             }
         }
-stage('Deploy to Tomcat') {
+        stage('Docker Build') {
+            steps {
+                powershell '''
+                    $ErrorActionPreference = 'Stop'
+                    $docker = Join-Path $env:ProgramFiles 'Docker/Docker/resources/bin/docker.exe'
+
+                    & $docker build -t "business-licence-renewal:ci-$env:BUILD_NUMBER" .
+                    if ($LASTEXITCODE -ne 0) {
+                        throw 'Docker image build failed.'
+                    }
+                '''
+            }
+        }
+        stage('Deploy to Tomcat') {
             when {
                 expression { params.DEPLOY_TO_TOMCAT }
             }
@@ -139,3 +152,4 @@ stage('Deploy to Tomcat') {
         }
     }
 }
+

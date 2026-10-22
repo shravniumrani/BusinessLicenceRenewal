@@ -5,7 +5,7 @@ pipeline {
         skipDefaultCheckout(true)
         disableConcurrentBuilds()
         skipStagesAfterUnstable()
-        timeout(time: 15, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
 
@@ -63,7 +63,7 @@ pipeline {
             }
         }
 
-                 stage('Selenium Tests') {
+        stage('Selenium Tests') {
             steps {
                 bat '''
                     powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\run-selenium.ps1 -TomcatHome "%TOMCAT_HOME%" -JavaHome "%JAVA_HOME%"
@@ -95,14 +95,59 @@ pipeline {
                 '''
             }
         }
-                stage('Deploy to Docker') {
+        stage('Deploy to Docker') {
             steps {
                 bat '''
                     powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-docker.ps1 -Image business-licence-renewal:ci-%BUILD_NUMBER%
                 '''
             }
         }
-stage('Deploy to Tomcat') {
+        stage('Publish to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: '34a85ded-032b-4461-afe6-cba3ed68c617',
+                    usernameVariable: 'DOCKERHUB_USERNAME',
+                    passwordVariable: 'DOCKERHUB_TOKEN'
+                )]) {
+                    powershell '''
+                        $ErrorActionPreference = 'Stop'
+                        $docker = Join-Path $env:ProgramFiles 'Docker/Docker/resources/bin/docker.exe'
+                        $sourceImage = "business-licence-renewal:ci-$env:BUILD_NUMBER"
+                        $targetImage = "shravniu/business-licence-renewal:ci-$env:BUILD_NUMBER"
+                        $configDir = Join-Path ([IO.Path]::GetTempPath()) ("licence-docker-" + [Guid]::NewGuid().ToString('N'))
+
+                        # Resolve the active engine before using a temporary login configuration.
+                        $ErrorActionPreference = 'Continue'
+                        $engineHost = & $docker context inspect --format '{{.Endpoints.docker.Host}}'
+                        if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($engineHost)) {
+                            throw 'Cannot resolve the Docker engine.'
+                        }
+                        $engineHost = "$engineHost".Trim()
+                        New-Item -ItemType Directory -Path $configDir -ErrorAction Stop | Out-Null
+                        try {
+                            & $docker --host $engineHost --config $configDir tag $sourceImage $targetImage
+                            if ($LASTEXITCODE -ne 0) { throw 'Docker image tagging failed.' }
+
+                            $env:DOCKERHUB_TOKEN | & $docker --host $engineHost --config $configDir login --username $env:DOCKERHUB_USERNAME --password-stdin
+                            if ($LASTEXITCODE -ne 0) { throw 'Docker Hub login failed. Check the Jenkins credential.' }
+
+                            & $docker --host $engineHost --config $configDir push $targetImage
+                            if ($LASTEXITCODE -ne 0) { throw 'Docker Hub push failed.' }
+
+                            $publishedDigest = & $docker --host $engineHost --config $configDir image inspect --format '{{json .RepoDigests}}' $targetImage
+                            if ($LASTEXITCODE -ne 0) { throw 'Cannot read the published image digest.' }
+                            Write-Host "Published image: $targetImage"
+                            Write-Host "Repository digests: $publishedDigest"
+                        } finally {
+                            & $docker --host $engineHost --config $configDir logout | Out-Null
+                            Remove-Item -LiteralPath $configDir -Recurse -Force -ErrorAction Stop
+                        }
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy to Tomcat') {
             when {
                 expression { params.DEPLOY_TO_TOMCAT }
             }
@@ -159,5 +204,3 @@ stage('Deploy to Tomcat') {
         }
     }
 }
-
-

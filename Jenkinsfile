@@ -105,42 +105,67 @@ pipeline {
         stage('Publish to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: '34a85ded-032b-4461-afe6-cba3ed68c617',
-                    usernameVariable: 'DOCKERHUB_USERNAME',
-                    passwordVariable: 'DOCKERHUB_TOKEN'
+                    credentialsId: 'dockerhub-verified',
+                    usernameVariable: 'HUB_USER',
+                    passwordVariable: 'HUB_TOKEN'
                 )]) {
                     powershell '''
                         $ErrorActionPreference = 'Stop'
                         $docker = Join-Path $env:ProgramFiles 'Docker/Docker/resources/bin/docker.exe'
-                        $sourceImage = "business-licence-renewal:ci-$env:BUILD_NUMBER"
-                        $targetImage = "shravniu/business-licence-renewal:ci-$env:BUILD_NUMBER"
-                        $configDir = Join-Path ([IO.Path]::GetTempPath()) ("licence-docker-" + [Guid]::NewGuid().ToString('N'))
+                        $source = "business-licence-renewal:ci-$env:BUILD_NUMBER"
+                        $target = "shravniu/business-licence-renewal:ci-$env:BUILD_NUMBER"
+                        $config = Join-Path $env:TEMP ([Guid]::NewGuid().ToString('N'))
 
-                        # Resolve the active engine before using a temporary login configuration.
-                        $ErrorActionPreference = 'Continue'
-                        $engineHost = & $docker context inspect --format '{{.Endpoints.docker.Host}}'
-                        if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($engineHost)) {
-                            throw 'Cannot resolve the Docker engine.'
+                        if ($env:HUB_USER.Trim() -cne 'shravniu') {
+                            throw 'Docker Hub username must be shravniu.'
                         }
-                        $engineHost = "$engineHost".Trim()
-                        New-Item -ItemType Directory -Path $configDir -ErrorAction Stop | Out-Null
+                        if ([string]::IsNullOrWhiteSpace($env:HUB_TOKEN)) {
+                            throw 'Docker Hub token is empty.'
+                        }
+
+                        $engine = & $docker context inspect --format '{{.Endpoints.docker.Host}}'
+                        if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace("$engine")) {
+                            throw 'Cannot find Docker engine.'
+                        }
+                        $engine = "$engine".Trim()
+                        New-Item -ItemType Directory -Path $config | Out-Null
+
                         try {
-                            & $docker --host $engineHost --config $configDir tag $sourceImage $targetImage
-                            if ($LASTEXITCODE -ne 0) { throw 'Docker image tagging failed.' }
+                            $pair = $env:HUB_USER.Trim() + ':' + $env:HUB_TOKEN.Trim()
+                            $auth = [Convert]::ToBase64String(
+                                [Text.Encoding]::UTF8.GetBytes($pair)
+                            )
+                            $settings = @{
+                                auths = @{
+                                    'https://index.docker.io/v1/' = @{
+                                        auth = $auth
+                                    }
+                                }
+                            } | ConvertTo-Json -Depth 5
 
-                            $env:DOCKERHUB_TOKEN | & $docker --host $engineHost --config $configDir login --username $env:DOCKERHUB_USERNAME --password-stdin
-                            if ($LASTEXITCODE -ne 0) { throw 'Docker Hub login failed. Check the Jenkins credential.' }
+                            [IO.File]::WriteAllText(
+                                (Join-Path $config 'config.json'),
+                                $settings,
+                                (New-Object Text.UTF8Encoding($false))
+                            )
 
-                            & $docker --host $engineHost --config $configDir push $targetImage
-                            if ($LASTEXITCODE -ne 0) { throw 'Docker Hub push failed.' }
+                            $ErrorActionPreference = 'Continue'
+                            & $docker --host "$engine" --config "$config" tag $source $target
+                            if ($LASTEXITCODE -ne 0) {
+                                throw 'Docker image tagging failed.'
+                            }
 
-                            $publishedDigest = & $docker --host $engineHost --config $configDir image inspect --format '{{json .RepoDigests}}' $targetImage
-                            if ($LASTEXITCODE -ne 0) { throw 'Cannot read the published image digest.' }
-                            Write-Host "Published image: $targetImage"
-                            Write-Host "Repository digests: $publishedDigest"
+                            & $docker --host "$engine" --config "$config" push $target
+                            if ($LASTEXITCODE -ne 0) {
+                                throw 'Docker Hub push failed.'
+                            }
+
+                            Write-Host "Published successfully: $target"
                         } finally {
-                            & $docker --host $engineHost --config $configDir logout | Out-Null
-                            Remove-Item -LiteralPath $configDir -Recurse -Force -ErrorAction Stop
+                            Remove-Item -LiteralPath $config -Recurse -Force -ErrorAction Stop
+                            $pair = $null
+                            $auth = $null
+                            $settings = $null
                         }
                     '''
                 }

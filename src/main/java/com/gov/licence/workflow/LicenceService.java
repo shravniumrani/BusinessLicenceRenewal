@@ -45,7 +45,7 @@ public final class LicenceService {
     }
     public long create(User actor,Map<String,String> fields) {
         role(actor,Role.BUSINESS_OWNER);ApplicationInput in=ApplicationInput.parse(fields);
-        try(Connection c=db.connect();PreparedStatement ps=c.prepareStatement("INSERT INTO licence_records(business_name,registration_number,trade_category,annual_turnover,expiry_date,contact_email,contact_phone,owner_id,status) VALUES(?,?,?,?,?,?,?,?,'UNDER_REVIEW')",Statement.RETURN_GENERATED_KEYS)) {
+        try(Connection c=db.connect();PreparedStatement ps=c.prepareStatement("INSERT INTO licence_records(business_name,registration_number,trade_category,annual_turnover,expiry_date,contact_email,contact_phone,owner_id,status) VALUES(?,?,?,?,?,?,?,?,'SUBMITTED')",Statement.RETURN_GENERATED_KEYS)) {
             bind(ps,in);ps.setLong(8,actor.getId());ps.executeUpdate();try(ResultSet rs=ps.getGeneratedKeys()){rs.next();return rs.getLong(1);}
         }catch(SQLException ex){throw storage(ex);}
     }

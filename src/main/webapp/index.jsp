@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="header-status-badge">
-                <span>Stage 1: Initial Skeleton &bull; v0.1.0-SNAPSHOT</span>
+                <span>Business Licence Renewal Portal</span>
             </div>
         </div>
     </header>
@@ -32,8 +32,8 @@
         <!-- Scope Approval Banner -->
         <div class="status-banner">
             <div>
-                <strong>Scope Approval Status: PENDING TEACHER REVIEW</strong>
-                <p>Initial project skeleton deployed for college DevOps assignment evaluation. Core feature branches will be implemented in subsequent stages.</p>
+                <strong>Online Business Licence Renewals</strong>
+                <p>Submit renewal applications, track their status and view decisions from your licensing officer.</p>
             </div>
             <a href="https://github.com" target="_blank" class="btn btn-outline" style="white-space: nowrap;">Docs Folder</a>
         </div>

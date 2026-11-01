@@ -1,85 +1,108 @@
-# Business Licence Renewal System — DevOps Project Deliverables Checklist
+﻿# Business Licence Renewal System - Deliverables Checklist
 
-This checklist tracks all 14 assignment deliverables across the software engineering and DevOps lifecycle for the individual college project: **Jenkins Deployment for a Business Licence Renewal System**.
+Updated: 1 November 2026.
 
----
+Checked items have implementation or execution evidence.
+Unchecked items require further evidence or are outside the verified scope.
+Teacher approval and independent PR review are not claimed.
 
-## Deliverables Status Matrix
+## 1. Planning and design
+- [x] Problem statement, stakeholders, objectives and scope documented.
+- [x] User stories, acceptance criteria and backlog documented.
+- [x] Sprint plan, Kanban workflow and Definition of Done documented.
+- [x] DevOps lifecycle, architecture and data model documented.
+- [ ] Record teacher scope approval when received.
+- [ ] Reconcile task-board/backlog status with completed implementation.
 
-| ID | Assignment Deliverable Area | Key Artifacts & Verification Criteria | Target Milestone | Current Status |
-|---|---|---|---|---|
-| **DEL-01** | Problem Statement & Scope | Problem statement, stakeholders, objectives, constraints, MVP scope vs. out-of-scope boundaries. Marked as pending teacher review. | Stage 1 (Initial Setup) | **COMPLETED (Pending Review)** |
-| **DEL-02** | Agile Planning & DevOps Lifecycle | User stories with Gherkin acceptance criteria, MoSCoW product backlog, sprint plan, Kanban workflow, Definition of Done (DoD), and end-to-end DevOps lifecycle diagram. | Stage 1 (Initial Setup) | **COMPLETED** |
-| **DEL-03** | SRS, Architecture & Data Model | SRS summary (FRs/NFRs), Mermaid Use-Case diagram, System Architecture diagram, ER data model, REST/Web endpoint table, local setup instructions. | Stage 1 (Initial Setup) | **COMPLETED** |
-| **DEL-04** | Repository & Collaboration Setup | Git repository initialized, `.gitignore`, production-ready `README.md`, standard Maven directory layout, GitHub issue templates, PR template, Git branching policy. | Stage 1 (Initial Setup) | **COMPLETED** |
-| **DEL-05** | First Feature Branch & Merge | Branch `feature/auth-and-models` created, local implementation of authentication and domain entities, PR reviewed, cleanly merged into `development`. | Stage 2 (Core Features) | **PLANNED** |
-| **DEL-06** | Remaining MVP & Release Tag | Branch `feature/licence-crud-workflow`, search/dashboard/officer review implementation, merge conflict resolution simulation, release tag `v1.0.0` cut on `main`. | Stage 2 (Core Features) | **PLANNED** |
-| **DEL-07** | Jenkins CI Job & Build Artifact | Jenkins CI freestyle or pipeline job with commit-triggered polling / webhook, automated clean compile, package, and archived `business-licence-renewal.war`. | Stage 3 (CI Automation) | **PLANNED** |
-| **DEL-08** | Declarative Jenkinsfile | Pipeline with parameters (`ENVIRONMENT=dev/staging/prod`), stages: Checkout, Build, Test, Package, Archive, and Deployment to Apache Tomcat 10.1+. | Stage 3 (CI Automation) | **PLANNED** |
-| **DEL-09** | Selenium Journey Automation | 3–5 automated end-to-end Selenium journeys (Owner registration/login, Licence submission, Officer review/decision, Search filtering), assertions, test data provider, execution via Maven, failure screenshot hooks. | Stage 4 (Test Automation) | **PLANNED** |
-| **DEL-10** | Quality Gate & Defect Demonstration | Jenkins JUnit/Surefire test reports, build/deployment strictly blocked on test failure, deliberate defect injected and demonstrated, subsequent fix and green rerun. | Stage 4 (Test Automation) | **PLANNED** |
-| **DEL-11** | Docker Containerization | Multi-stage/Tomcat `Dockerfile`, container build, image tagging, run with port mapping (`8080:8080`), log streaming, stop, restart, and clean removal verification. | Stage 5 (Containers & Registry) | **PLANNED** |
-| **DEL-12** | Versioned Image & Pipeline Deploy | Automated tagging (`business-licence-renewal:1.0.0`), Docker registry push/local registry publish, automated container redeployment triggered after test suite passes. | Stage 5 (Containers & Registry) | **PLANNED** |
-| **DEL-13** | Ansible Configuration Management | Ansible inventory, playbook defining Tomcat user, system packages, directory hierarchy, permission hardening, war transfer, firewall ports, and service management. | Stage 6 (Ansible & Operations) | **PLANNED** |
-| **DEL-14** | Provisioning, Idempotency & Rollback | Clean VM/host provisioning demonstration, two consecutive identical runs proving zero change (idempotency), HTTP health-check verification, automated rollback to prior stable war. | Stage 6 (Ansible & Operations) | **PLANNED** |
+## 2. Git and collaboration
+- [x] Repository, README, Maven layout and .gitignore present.
+- [x] Issue templates, PR template and branching policy present.
+- [x] Authentication and licence workflow feature branches merged.
+- [x] Merge conflict resolution exercise recorded in Git history.
+- [x] PR #6 merged Docker publishing and Ansible verification into development.
+- [x] PR #7 merged development into main.
+- [x] Annotated release tag v1.0.0 pushed for commit 6c290c2.
+- [ ] Supply independent PR review evidence if required.
+- [ ] Verify assignment issue/task-board evidence.
 
----
+Release note: v1.0.0 identifies the Jenkins build #27 baseline.
+Later homepage and documentation commits are on main.
 
-## Detailed Requirement Breakdown & Verification Evidence
+## 3. Application
+- [x] Java 21, Maven Wrapper and WAR packaging.
+- [x] Jakarta Servlet application running on Tomcat 10.1.
+- [x] Business Owner and Licensing Officer authentication.
+- [x] Server-side role checks and owner-specific application access.
+- [x] Create, view, edit, delete and search renewal applications.
+- [x] Submitted applications can enter officer review.
+- [x] Officer approval/rejection requires decision remarks.
+- [x] Dashboard counts reflect application decisions.
+- [x] H2 persistence and server-side validation.
+- [x] Owner-to-officer approval journey demonstrated in the running app.
+- [x] Homepage wording updated and deployed.
 
-### 1. Planning & Design Phase (Stages 1–2)
-- [x] **Problem Statement**: Defined in `docs/problem_statement_and_scope.md`.
-- [x] **Stakeholders & Objectives**: Documented with role responsibilities and system boundaries.
-- [x] **Scope Approval**: Explicitly marked as **PENDING TEACHER REVIEW** in documentation.
-- [x] **User Stories & Acceptance Criteria**: Standard Gherkin syntax (`Given-When-Then`) covering both Owner and Officer workflows in `docs/user_stories_and_backlog.md`.
-- [x] **Sprint & Kanban Plan**: Documented 5-sprint agile delivery plan and workflow state transitions.
-- [x] **Definition of Done (DoD)**: Strict quality criteria defined for code, tests, documentation, and CI status.
-- [x] **DevOps Lifecycle Diagram**: Visualized using Mermaid flowchart covering Plan -> Monitor.
-- [x] **SRS & Diagrams**: Functional/Non-Functional requirements, Use-Case diagram, System Architecture diagram, and Data Model in `docs/srs_architecture_design.md`.
+## 4. Jenkins and tests
+- [x] Jenkins pipeline operational on localhost:8081.
+- [x] Poll SCM configured; build #26 started by an SCM change.
+- [x] Declarative Jenkinsfile performs checkout, build, test and packaging.
+- [x] Deployment parameters include DEPLOY_TO_TOMCAT and TOMCAT_HOME.
+- [x] WAR archived with fingerprints.
+- [x] 17 unit tests and 3 Selenium browser journeys.
+- [x] Selenium failure screenshot hook implemented.
+- [x] Unit and Selenium test results published in Jenkins.
+- [x] Failed tests block downstream deployment and publishing.
+- [x] Deliberate defect caused build #24 to fail.
+- [x] Defect reverted; build #25 succeeded.
+- [x] Build #30 finished SUCCESS after a Docker network failure retry.
+- [ ] Verify a separately preserved local Maven Selenium report if required.
+- [ ] Preserve a triggered Selenium failure screenshot if required.
 
-### 2. Version Control & Git Strategy (Stages 1–2)
-- [x] Local Git repository initialized with `main` branch.
-- [x] Git branching policy (`main`, `development`, `feature/*`, `hotfix/*`) in `docs/branching_policy.md`.
-- [x] GitHub issue templates for bug reports and feature requests in `.github/ISSUE_TEMPLATE/`.
-- [x] Pull request template configured in `.github/pull_request_template.md`.
-- [ ] Feature branch 1 (`feature/auth-and-models`): real commit history, PR, merge into `development`.
-- [ ] Feature branch 2 (`feature/licence-crud-workflow`): real commit history, merge conflict resolution demonstration, merge into `development` and `main`, release tag `v1.0.0`.
+The pipeline uses deployment settings rather than an ENVIRONMENT
+dev/staging/prod selector.
 
-### 3. Application Architecture & Local Build (Stage 1 & Stage 2)
-- [x] Java 21 LTS compatibility.
-- [x] Official Maven Wrapper (`mvnw`, `mvnw.cmd`, `.mvn/wrapper/maven-wrapper.properties`, `maven-wrapper.jar`) included for zero-PATH dependency.
-- [x] Clean WAR packaging targeting Apache Tomcat 10.1+ (Jakarta EE 10 / Servlet 6.0).
-- [x] Landing page (`src/main/webapp/index.jsp`) with system status and responsive styling.
-- [x] Health-check servlet (`/health`) returning application uptime and metadata.
-- [ ] Authentication layer: Business Owner and Licensing Officer roles enforced strictly on server side.
-- [ ] CRUD operations for Licence Renewal applications (Create, Read, Update, Search).
-- [ ] Data scoping: Business Owners can view/edit only their own submissions.
-- [ ] Review workflow: Officers can inspect, approve, or reject submissions with mandatory remarks.
-- [ ] Summary Dashboard: Application metrics (Total, Submitted, Under Review, Approved, Rejected).
-- [ ] Persistence & validation: Input sanitization, business rule validation, persistent storage.
+Evidence:
+- evidence/quality-gate/build-24-failed.log
+- evidence/quality-gate/build-25-passed.log
+- evidence/jenkins/build-26-scm-trigger.log
+- evidence/jenkins/build-30-success.log
 
-### 4. Continuous Integration & Pipeline Automation (Stage 3 & Stage 4)
-- [ ] Jenkins service operational (local host or containerized).
-- [ ] CI Job configuration with automated triggers (Git polling or push hooks).
-- [ ] Jenkinsfile scripted/declarative pipeline with environment parameter (`dev`, `staging`, `prod`).
-- [ ] Automated artifact archiving (`target/*.war`).
-- [ ] Selenium Test Suite (3–5 end-to-end user journeys).
-- [ ] Automated failure screenshot capture on test assertion failure.
-- [ ] Surefire and JUnit test report publishing in Jenkins UI.
-- [ ] Quality Gate: Pipeline halts and blocks deployment when any unit or UI test fails.
-- [ ] Deliberate defect demonstration: Documented break, pipeline block, fix, and green rerun.
+## 5. Docker and registry
+- [x] Dockerfile uses Tomcat 10.1.60 with Java 21.
+- [x] Jenkins builds images tagged ci-BUILD_NUMBER.
+- [x] Container deployment follows successful tests.
+- [x] Application published on host port 8085 to container port 8080.
+- [x] Persistent application data volume configured.
+- [x] Container HTTP health checked during deployment.
+- [x] Tested images published to shravniu/business-licence-renewal.
+- [x] Git homepage change reached the running container through Jenkins.
+- [ ] Verify a saved CLI lifecycle log covering logs, stop, restart and removal.
+- [ ] Add a semantic Docker image tag if specifically required.
 
-### 5. Containerization & Registry (Stage 5)
-- [ ] `Dockerfile` for Apache Tomcat 10.1 + Java 21 runtime.
-- [ ] Build, tag (`business-licence-renewal:latest` and semantic versions), run with port mapping `8080:8080`.
-- [ ] Container CLI demonstration: `docker logs`, `docker stop`, `docker restart`, `docker rm`.
-- [ ] Image registry push (Docker Hub or local private registry).
-- [ ] Post-test automated container deployment in Jenkins pipeline.
+The Git release tag v1.0.0 and Docker ci-N tags are separate identifiers.
 
-### 6. Configuration Management & Infrastructure as Code (Stage 6)
-- [ ] Ansible inventory defining target deployment host(s).
-- [ ] Ansible playbook provisioning Java 21, Tomcat service, user creation, file permissions, and firewall rules.
-- [ ] Automated war artifact deployment and service restart.
-- [ ] Idempotency verification: Running the playbook twice leaves zero changed tasks on second execution.
-- [ ] Automated health-check verification (`curl http://<host>:8080/health`).
-- [ ] Automated rollback mechanism restoring the previous known-good release if deployment fails.
+## 6. Ansible configuration and recovery
+- [x] Inventory defines target-node with a local connection.
+- [x] Playbook manages required packages, tomcat user/group and permissions.
+- [x] Tomcat environment, directories and service control configured.
+- [x] Application WAR deployment and restart verified.
+- [x] Repeat deployment produced zero changed tasks.
+- [x] Invalid candidate WAR rejected.
+- [x] Previous healthy WAR restored and checked using SHA-256.
+- [x] HTTP health after recovery returned UP.
+- [x] Post-recovery run: ok=15, changed=0, unreachable=0, failed=0.
+- [x] Configuration specification and execution evidence corrected.
+- [ ] Clean VM provisioning is not demonstrated.
+- [ ] Host firewall configuration is not demonstrated.
+
+Verified run: 21da8e975647.
+Evidence: evidence/ansible/21da8e975647/
+
+Ansible ran in a separate isolated Linux container with real Tomcat.
+Java and Tomcat were supplied by the base image.
+This suite is separate from Jenkins and does not demonstrate database rollback.
+Health endpoint: /business-licence-renewal/health.
+
+## Submission status
+Core application and CI/CD execution are demonstrated.
+Remaining unchecked items identify evidence to verify or scope limitations;
+they must not be represented as completed without supporting evidence.

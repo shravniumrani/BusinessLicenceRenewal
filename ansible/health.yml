@@ -1,0 +1,12 @@
+---
+- name: Verify actual application HTTP health
+  ansible.builtin.uri:
+    url: "{{ health_endpoint }}"
+    return_content: true
+    status_code: 200
+    timeout: 5
+  register: application_health
+  until: application_health.status == 200 and (application_health.json.status | default('')) == 'UP'
+  retries: 30
+  delay: 2
+  changed_when: false

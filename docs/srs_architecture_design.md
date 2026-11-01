@@ -178,7 +178,7 @@ erDiagram
 1. **`USERS` Table**:
    - `id`: Primary key (Integer, Auto-increment).
    - `username`: Unique login handle (VARCHAR(50)).
-   - `password_hash`: Salted SHA-256 / BCrypt hash string.
+   - `password_hash`: Salted PBKDF2-HMAC-SHA256 hash string.
    - `full_name`: Real name of the individual or authorized officer (VARCHAR(100)).
    - `email`: Contact email address (VARCHAR(120)).
    - `role`: Role discriminator (`BUSINESS_OWNER` or `LICENSING_OFFICER`).
@@ -213,7 +213,7 @@ erDiagram
 | `GET` | `/health` | Public | JSON health-check endpoint for monitoring and Ansible verification. |
 | `GET` | `/login` | Public | Renders user login form. |
 | `POST` | `/login` | Public | Authenticates credentials and starts user session. |
-| `GET` | `/logout` | Authenticated | Terminates active session and invalidates cookie. |
+| `POST` | `/logout` | Authenticated | Terminates active session and invalidates cookie. |
 | `GET` | `/dashboard` | Authenticated | Redirects to role-specific dashboard based on session. |
 | `GET` | `/owner/dashboard` | `BUSINESS_OWNER` | Displays business owner's personal applications table and search. |
 | `GET` | `/owner/renew` | `BUSINESS_OWNER` | Renders application form for new licence renewal. |
@@ -248,3 +248,29 @@ $env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
 # 4. Verify the built artifact
 Get-Item target\business-licence-renewal.war
 ```
+
+
+## 7. Current implementation notes — licence workflow
+
+The diagrams above describe the proposed design. The implemented local MVP uses
+`app_users` as a identity table seeded from the existing demo-user properties;
+password hashes stay in `demo-users.properties` for the authentication stage.
+`licence_records` references the owner and final reviewer, and `audit_remarks`
+stores the decision in the same transaction as its status change. It is not a
+registration system yet.
+
+The implemented lifecycle is SUBMITTED → UNDER_REVIEW → APPROVED/REJECTED, with
+approval/rejection also permitted directly from SUBMITTED. Owners can update or
+delete only SUBMITTED records. Every mutation uses a POST form with CSRF checks.
+
+Additional implemented routes (all take an `id` query/form parameter):
+
+| Method | Route | Role | Purpose |
+|---|---|---|---|
+| GET / POST | `/owner/records/edit` | Owner | Edit an owned submitted record |
+| POST | `/owner/records/delete` | Owner | Delete an owned submitted record |
+| POST | `/officer/records/start` | Officer | Mark a submitted record under review |
+
+Contact phone and email are required. Search uses the `q` parameter and optional
+`status` filter. Metrics count all records visible to the current role, regardless
+of the current table filter. Pending includes SUBMITTED and UNDER_REVIEW.

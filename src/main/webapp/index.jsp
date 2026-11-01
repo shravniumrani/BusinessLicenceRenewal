@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 <body>
+    <p style="text-align:center;padding:16px"><a id="sign-in-link" href="<%= request.getContextPath() %>/login">Sign in to your workspace</a></p>
 
     <!-- Header Banner -->
     <header class="gov-header">

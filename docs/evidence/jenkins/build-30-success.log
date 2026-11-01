@@ -1,0 +1,439 @@
+Started by user [8mha:////4C1ynBoriR4M1Ocy723AiBgq4gFyR3J9boi1WBD0bSsUAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAy+EgZe/dLi1CL94oyixLK8TAAIf/lswgAAAA==[0mShravni Umrani
+Obtained Jenkinsfile from git https://github.com/shravniumrani/BusinessLicenceRenewal.git
+[8mha:////4FJlZbltZRfTQpHP3kLW0+HTBISZ0BpOSVnamcNjxgglAAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
+[8mha:////4J0foi6RUvYTWO8utDLLKpYvWI1ulXNZGgH2w6zKkbdwAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
+Running on [8mha:////4HHwDxTAXc3Z0fC3WYpGKkKLL1RUIzOatLv26wU7pb/9AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZR/eT83ILSktQifY2k0sycEt3MPE19AHHxbH3KAAAA[0mJenkins in C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline
+[8mha:////4BH62T+d94Chng3tQjd+ObUB6RPJ4N8gt+TMw9GLpbJPAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
+[8mha:////4C6i1dvC92TrbM0w4KMeiC5uAL+jJUr3WRY0t8HW5CUcAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] withEnv
+[8mha:////4L+uTcjj1cMatk5XRM/ON6lu4ePmv3aGYO24zr954TcNAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] {
+[8mha:////4JfZH+DJ2G4foJ517+zK8fNFM1XLBY8Ye0MIcuhJnumAAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gwExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jcChmMxwAAAAA==[0m[Pipeline] timeout
+Timeout set to expire in 30 min
+[8mha:////4PkijOlHfY5Hw9cjQDAx0eaXhuZZ3shu6/OWELOHuwVnAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0BAkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfpX/cvwAAAAA==[0m[Pipeline] {
+[8mha:////4LqNirRby0XQEThGBJ3pJX5a9IbLiumgnKfaAyOwCy5VAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0BSEm1igLJwhJCGmj/9skpZ04EVfjDgQqMWHJkm3Jes8X1CnCkaLjrcXOY9Ke92F0JfGJYncNNPGWLlwTJgqWSztJMva0VEnZwiJWwUrA2qIOlDy6DBvRqrtqgkLXnHMs20FA5c0AD2CikLOK+VvmCNvbaBLhj/MXAHOfge2K959f/QbB16AVwAAAAA==[0m[Pipeline] stage
+[8mha:////4Ie3Vg9OGS5OQrinNn/szeJD5kI6Togxsrn0rauHEQVtAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQDJUJUtJYbXmBiY5xYd8G+kFS8iK/xBwKRqNhqZ6XVPF9Q5gQHSl42DtuAuQ6yi72fmhwotZdIg2zoLGvCTNFJ7QZN1h1n1MQO5ogCFgqWDutIOaBnWKnG3E0VDfrqxGna9gqKYG/wAKEmM5vEXxgTrK+9zYQ/z18BjB2D2DEU283nWL4Bsam+msEAAAA=[0m[Pipeline] { (Checkout)
+[8mha:////4F4o8FNKmTVSjaqSS4m4wyprN+AoZ5svyzUmYaKjmJuPAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJCakRFa6XhBSYxxo5159gOTsWL+Bp/IBCJii1WO9vM8wXrGODIQaNV1BuKrUHvRj0vzBz6q+OMli/YMkV2ChuVG+7UacGGk4IlRQkrARtFreNoSCfYCivvsnKSdHVOYf4OAkrTDfCAQszmJEP6whRgdxu7yPTz/BXA5BOU9f5TtX8D0loxuL4AAAA=[0m[Pipeline] deleteDir
+[8mha:////4GYqf3Fv9BhZtiC5JpH3DU4DqkKwCZz8Ak2u2AUr6UhXAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICtIgqreWGF5jYGCfWnbEdkooX8TX+QCASFVusdraZ5wuWKcKRo8XWUOcoNQ6D7+20cODYXTwP2PIZG6bE3qA0g2Rt6hklZwNzihIWAlaGGs/Jkc2wFq26q8orstUpx+k7CCidvsEDCjGZs4r5C2OEzbXXienn+SuAMWQod9tP7cMbEQkck74AAAA=[0m[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/shravniumrani/BusinessLicenceRenewal.git
+ > git.exe init C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline # timeout=10
+Fetching upstream changes from https://github.com/shravniumrani/BusinessLicenceRenewal.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.52.0.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/shravniumrani/BusinessLicenceRenewal.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url https://github.com/shravniumrani/BusinessLicenceRenewal.git # timeout=10
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision 80fc587b740228fd21145486119f3d96e3a49752 (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 80fc587b740228fd21145486119f3d96e3a49752 # timeout=10
+Commit message: "Correct Ansible documentation"
+ > git.exe rev-list --no-walk 80fc587b740228fd21145486119f3d96e3a49752 # timeout=10
+[8mha:////4PMwXR1Kle/M7sA7p1lull9Ma7MIJqJhUnLtgorIZBKuAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICokRUaS03vMDExjix7oztkFS8iK/xBwKRqNhitbPNPF+wTBGOHC22hjpHqXEYfG+nhQPH7uJ5wJbP2DAl9galGSRrU88oORuYU5SwELAy1HhOjmyGtWjVXVVeka1OOU7fQUDp9A0eUIjJnFXMXxgjbK69Tkw/z18BjCFkKHf7T23fF9V+kL4AAAA=[0m[Pipeline] }
+[8mha:////4MS6alw/Y7KEJpnArmkIoy7+5+YLP4gJ6l+jA6K4ervOAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIREg1CVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5NudINt/APjxdFm9AAAA[0m[Pipeline] // stage
+[8mha:////4LLpAy7wqKrIDZZCj6ChY2wYLHOMI3b7TkNtyGxnnh7+AAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjCiQkREVrueEFJjbGiXUX7AtJxYv4Gn8gEImKrXZWWs3zBWVOcKDkZeOwDZjrILvY+6nJgVJ7iTTIhs6yJswUndRu0GTdcUZN7GCOKGChYOmwjpQDeoaVaszdVNGgr06cpm2voAj2Bg8QajKzSfyFMcH62ttM+PP8FcDYMYgdQ7HZfo7lG8Ln/QvBAAAA[0m[Pipeline] stage
+[8mha:////4Hyxu5/U4HWQWcdLet1BATFHtbx68393rMVOI//szFedAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUDLAgpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD/s94rDCAAAA[0m[Pipeline] { (Build)
+[8mha:////4O9AEfmvRKA1ObuaHXJW3KufTQzFPDvWZfn8AO+ZgdxmAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiGigQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUG53n9qHN27Iu42+AAAA[0m[Pipeline] bat
+
+C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline>call mvnw.cmd -B clean compile 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.gov.licence:business-licence-renewal >--------------
+[INFO] Building Business Licence Renewal System 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ business-licence-renewal ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ business-licence-renewal ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ business-licence-renewal ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 18 source files with javac [debug release 21] to target\classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.196 s
+[INFO] Finished at: 2026-11-01T16:59:20+05:30
+[INFO] ------------------------------------------------------------------------
+[8mha:////4PO792BESwdru+xokmlmNFDvnBeV1A+zei6rKPgLm6VCAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiGoSEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFBu95/avQHhgNoTvgAAAA==[0m[Pipeline] }
+[8mha:////4IsPTXA5xHRxqpFN7ZYSVkxAgT5YE4FWMFGHkUyMRCQsAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiCgqEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFBu95/avQH+Ao9BvgAAAA==[0m[Pipeline] // stage
+[8mha:////4PGdAjNoErnOCrlNb7n/YFQdx4UhfhzKTc/6mTDXqbOnAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYSDqJAQFa3lhheY2Bgn1l2wLyQVL+Jr/IFAJCq22llpNc8XlDnBgZKXjcM2YK6D7GLvpyYHSu0l0iAbOsuaMFN0UrtBk3XHGTWxgzmigIWCpcM6Ug7oGVaqMXdTRYO+OnGatr2CItgbPECoycwm8RfGBOtrbzPhz/NXAGPHIHYMxXbzOZZv7GzYasEAAAA=[0m[Pipeline] stage
+[8mha:////4GSCJpaP7JlngQ4VeGb2z8WVRqU1DQZ7beCTag+iA1dyAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUWBFT1ygLJwhNCGmj/8tPSjtxIq7GHWipxIQHy7ZkvdcbishwInaisdh6jLUXXejdlMRA3F4DDaKhi6gJIwUrlB0UGVstVVGysCjLYSVhbbEOFD26BBvZ6Icug0ZXnhNP21FC7s0dnpDJiZw0p28ZGba33kTCH+cvAMYuQX7Yzbafn8UHbGnGmsIAAAA=[0m[Pipeline] { (Test)
+[8mha:////4CJEdeUM6B8INVZ7FClDpajiXyW2dDQP+M9p2p1o7QcBAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIi0iIqWisNLzCJMXasO8d2cCpexNf4A4FIVGyx2tlmni9YxwBHDhqtot5QbA16N+p5YebQXx1ntHzBlimyU9io3HCnTgs2nBQsKUpYCdgoah1HQzrBVlh5l5WTpKtzCvN3EFCaboAHFGI2JxnSF6YAu9vYRaaf568AJp+grPefqv0bH7uiub4AAAA=[0m[Pipeline] bat
+
+C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline>call mvnw.cmd -B test 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.gov.licence:business-licence-renewal >--------------
+[INFO] Building Business Licence Renewal System 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ business-licence-renewal ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ business-licence-renewal ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ business-licence-renewal ---
+[INFO] skip non existing resourceDirectory C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ business-licence-renewal ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 4 source files with javac [debug release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ business-licence-renewal ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.gov.licence.auth.AuthTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.486 s -- in com.gov.licence.auth.AuthTest
+[INFO] Running com.gov.licence.HealthCheckTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s -- in com.gov.licence.HealthCheckTest
+[INFO] Running com.gov.licence.workflow.LicenceServiceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.854 s -- in com.gov.licence.workflow.LicenceServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.090 s
+[INFO] Finished at: 2026-11-01T16:59:42+05:30
+[INFO] ------------------------------------------------------------------------
+Post stage
+[8mha:////4MtKB/8xeT0I3spRGSAXzvM+NQn0bV1RHm+pDWOY1AkaAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIioERUaS03vMDExjix7oztkFS8iK/xBwKRqNhitbPNPF+wTBGOHC22hjpHqXEYfG+nhQPH7uJ5wJbP2DAl9galGSRrU88oORuYU5SwELAy1HhOjmyGtWjVXVVeka1OOU7fQUDp9A0eUIjJnFXMXxgjbK69Tkw/z18BjCFDudt+ah/eXoq5oL4AAAA=[0m[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[8mha:////4IibJ+QwFBpfrXCw2GM2aTvFLpoQkfqk2M8rUTVSBnbzAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiEB2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwhQ7nbf2r7BmecueC+AAAA[0m[Pipeline] }
+[8mha:////4GCivxgoW7M+7s4ms/F8pNnmcDdXNur8iXdz0mTA3D4vAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCkKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrd/lPbN1R/4ly+AAAA[0m[Pipeline] // stage
+[8mha:////4IL5FtD+5q3eTeW6PZ8VWuZgzLLy5V12H+YDt9OZM7PeAAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjUSAkREVrueEFJjbGiXUX7AtJxYv4Gn8gEImKrXZWWs3zBWVOcKDkZeOwDZjrILvY+6nJgVJ7iTTIhs6yJswUndRu0GTdcUZN7GCOKGChYOmwjpQDeoaVaszdVNGgr06cpm2voAj2Bg8QajKzSfyFMcH62ttM+PP8FcDYMYgdQ7HZfo7lG/GPgbzBAAAA[0m[Pipeline] stage
+[8mha:////4BR3uqWzrIs8SsDHxMg4XFNODDE3QI0H4amO/5wiiO9dAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUYoABMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfAAyQCqkwgAAAA==[0m[Pipeline] { (Package)
+[8mha:////4GM+WJPEFvyLYozjAyt5FqqUeM7XL4vn2zZ3EX4WZombAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIi0YCEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDhnK7+9Q+vAGvZp0gvgAAAA==[0m[Pipeline] bat
+
+C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline>call mvnw.cmd -B -DskipTests package 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.gov.licence:business-licence-renewal >--------------
+[INFO] Building Business Licence Renewal System 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ business-licence-renewal ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ business-licence-renewal ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ business-licence-renewal ---
+[INFO] skip non existing resourceDirectory C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ business-licence-renewal ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ business-licence-renewal ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ business-licence-renewal ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [business-licence-renewal] in [C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline\target\business-licence-renewal]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline\src\main\webapp]
+[INFO] Building war: C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline\target\business-licence-renewal.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.306 s
+[INFO] Finished at: 2026-11-01T16:59:53+05:30
+[INFO] ------------------------------------------------------------------------
+[8mha:////4CorAl3v0d8/hZcstTVzOi820idwfS2X/RPDhSZPPHleAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIi0SCEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDhnK7+9Q+vAHuV4Y5vgAAAA==[0m[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[8mha:////4MzQtHIt5cazRGj3nmDcsDpfdjXyYTeheIljGvzKvEJWAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCoKBAqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDut7l2hw/wcDw0vgAAAA==[0m[Pipeline] }
+[8mha:////4LSBFPkm1eY2KQV1e7hpS7i2uuVyd4BSXlR7LyU4lViUAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiQKJBqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDut7l2hw/Dk2eIvgAAAA==[0m[Pipeline] // stage
+[8mha:////4FTq8uK9Wt2fs69sMg3rP7a6qsa9uD5Os4w2LJYtr14qAAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjQYOEqGgtN7zAxMY4se6CfSGpeBFf4w8EIlGx1c5Kq3m+oMwJDpS8bBy2AXMdZBd7PzU5UGovkQbZ0FnWhJmik9oNmqw7zqiJHcwRBSwULB3WkXJAz7BSjbmbKhr01YnTtO0VFMHe4AFCTWY2ib8wJlhfe5sJf56/Ahg7BrFjKLabz7F8A1PGZ4HBAAAA[0m[Pipeline] stage
+[8mha:////4C9ldLs+g5vKeeDRf+veuGj2/Z3RnNai40DQbaZWxFL7AAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+DOrAycohUoiNiYo26cILQhJA0+r9NUtKJE3E17kBLJSY8WLYl673eUMYAJwqGO42dxdha3vvRzIlnCt3NU+aOrrwljOQ1b3RuSOnzWhtKGlYVDDYCthpbT9GiSbATTj5k5SWa6pLCvB0FMKsGeEIhZnKSIX3LFGB/H1Uk/HH+AmDqE7D6sFi9PMsPfTawssIAAAA=[0m[Pipeline] { (Selenium Tests)
+[8mha:////4Hd8pCPvCDurq2uvwFOyBfTO/jfhByJY5MXORvcobAXtAAAAox+LCAAAAAAAAP9tjTESwiAURH/iWNhaeghSxM6xsmVoPAEmiBDmfwJEUnkir+YdRDNj5RY7+7Z5zxesY4AjBc2swsFg7AzzbtJlsUxhuDrKzNKFdYSRnGJCZUG9Oi0oKClYUtWw4rBR2DmKBnWCLbfyLhsnUTfnFMp34FCbfoQHVLyYkwzpC3OA3W3qI+HP81cAs09Qt+2n9v4NGWcPtb4AAAA=[0m[Pipeline] bat
+
+C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline>powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\run-selenium.ps1 -TomcatHome "C:/Users/SHRAVNI/Documents/apache-tomcat-10.1.60" -JavaHome "C:/Program Files/Java/jdk-21" 
+Waiting for test server: 1
+Waiting for test server: 2
+Running Selenium against the new WAR on port 8082.
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.gov.licence:business-licence-renewal >--------------
+[INFO] Building Business Licence Renewal System 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- failsafe:3.2.5:integration-test (default-cli) @ business-licence-renewal ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.gov.licence.selenium.LicenceBrowserIT
+Nov 01, 2026 5:00:20 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 156, returning the closest version; found: 154; Please update to a Selenium version that supports CDP version 156
+Nov 01, 2026 5:00:31 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 156, returning the closest version; found: 154; Please update to a Selenium version that supports CDP version 156
+Nov 01, 2026 5:00:37 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 156, returning the closest version; found: 154; Please update to a Selenium version that supports CDP version 156
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.41 s -- in com.gov.licence.selenium.LicenceBrowserIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- failsafe:3.2.5:verify (default-cli) @ business-licence-renewal ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  33.709 s
+[INFO] Finished at: 2026-11-01T17:00:42+05:30
+[INFO] ------------------------------------------------------------------------
+Selenium tests passed.
+Test server logs: C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline\target\selenium-tomcat-7afd51e7cffe4fdda73451e4975d0525\logs
+Post stage
+[8mha:////4CTfmH4wV/K1yqm9s2ntjFHIg51EIJZ/uw/54+jfJfSHAAAAox+LCAAAAAAAAP9tjTESwiAURH/iWNhaeghSZKwcK1uGxhNggghh/idAJJUn8mreQTQzVm6xs2+b93zBOgY4UtDMKhwMxs4w7yZdFssUhqujzCxdWEcYySkmVBbUq9OCgpKCJVUNKw4bhZ2jaFAn2HIr77JxEnVzTqF8Bw616Ud4QMWLOcmQvjAH2N2mPhL+PH8FMPsEddt+au/fWFYUrL4AAAA=[0m[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[8mha:////4B9p6TWGijZEBYFQ2wes6BUZ09H92gub7Ajz23iXnRauAAAApB+LCAAAAAAAAP9tjTESwiAURH/iWNhaeghSZMbGsbJlaDwBJogQ5n8CRFJ5Iq/mHUQzY+UWO/u2ec8XrGOAIwXNrMLBYOwM827SZbFMYbg6yszShXWEkZxiQmVBvTotKCgpWFLVsOKwUdg5igZ1gi238i4bJ1E35xTKd+BQm36EB1S8mJMM6QtzgN1t6iPhz/NXALNPULftp/b+DZsFOYe+AAAA[0m[Pipeline] archiveArtifacts
+Archiving artifacts
+[8mha:////4MxFcYzHI/FrgnLrQHSmf2W2rxDiIUduCR9cjFYsJEObAAAApB+LCAAAAAAAAP9tjTESwiAURH/iWNhaeghSpLBwrGwZGk+ACSKE+Z8AkVSeyKt5B9HMWLnFzr5t3vMF6xjgSEEzq3AwGDvDvJt0WSxTGK6OMrN0YR1hJKeYUFlQr04LCkoKllQ1rDhsFHaOokGdYMutvMvGSdTNOYXyHTjUph/hARUv5iRD+sIcYHeb+kj48/wVwOx9grrdf6p9AxC1Tze+AAAA[0m[Pipeline] }
+[8mha:////4CkOGl2btXnwSWrDjjO7Dbl+5druuG4qU36aJa0s6M+ZAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiQYOEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFDu9p/avgFTNx6xvgAAAA==[0m[Pipeline] // stage
+[8mha:////4BU32nEiX88qupBpSrg1I8+t/GjS7/SFfEPt7EUW+AFVAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYRT0IAQFa3lhheY2Bgn1l2wLyQVL+Jr/IFAJCq22llpNc8XlDnBgZKXjcM2YK6D7GLvpyYHSu0l0iAbOsuaMFN0UrtBk3XHGTWxgzmigIWCpcM6Ug7oGVaqMXdTRYO+OnGatr2CItgbPECoycwm8RfGBOtrbzPhz/NXAGPHILYMxWb3OZZvkDag68EAAAA=[0m[Pipeline] stage
+[8mha:////4IAFHPn7Qjos3sXSr6aZBCqK7hFBqWVuVe78DSxZQXI9AAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUCRaEOrFGXThBaEJIGv1fkpR04kRcjTsQqMSEB8u2ZL3nC6rgoSGvmVXYGwydYYMbdU4ske8vjhKzdGYdYSCnWKtSS1Id59pSVDCrKGHBYamwcxQM6ggrbsVd1E6grk/R5+3AoTTyBg8oeCZH4eO3TB7W11EGwh/nLwCmIUK53WfbbT7P6g0Z/aLSwgAAAA==[0m[Pipeline] { (Docker Build)
+[8mha:////4AJGaO8NOywsPHdUqN4pRYxwKrcmBbpBj8GaypGuQbxrAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICEh2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyv32U7vwBl2WGva+AAAA[0m[Pipeline] powershell
+powershell.exe : #0 building with "desktop-linux" instance using docker driver
+At C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline@tmp\durable-2b5f3d14\powershellWrapper.ps1:3 char:1
++ & powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Comm ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (#0 building wit...g docker driver:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 288B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/tomcat:10.1.60-jdk21-temurin
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 ...
+
+#5 [1/3] FROM docker.io/library/tomcat:10.1.60-jdk21-temurin@sha256:887953afba0434879427f18d011d4df26d49e1f5c9aad18b779ed738edf22cf3
+#5 resolve docker.io/library/tomcat:10.1.60-jdk21-temurin@sha256:887953afba0434879427f18d011d4df26d49e1f5c9aad18b779ed738edf22cf3 0.1s done
+#5 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 6.06MB 2.4s done
+#4 DONE 2.5s
+
+#6 [2/3] RUN mkdir -p /var/lib/licence
+#6 CACHED
+
+#7 [3/3] COPY target/business-licence-renewal.war /usr/local/tomcat/webapps/business-licence-renewal.war
+#7 DONE 0.2s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 0.6s done
+#8 exporting manifest sha256:382c37752cf459e9ce6c4383a72e52558147c9443b3c61f0c48d977d75114b8b 0.0s done
+#8 exporting config sha256:9fa6ebd4f0ccb82dfd690d6e429bfd8f647336c7c9e9d0ba9deae356d286c653 0.0s done
+#8 exporting attestation manifest sha256:e41030c3cd19c43bbd779ca07e02b713f19fe7ccd9d9d875293fee10a1d9a4d9 0.0s done
+#8 exporting manifest list sha256:ce0098557d4e7a7809629e8b5a0b1ba2cb7b063ee3360093f056b6f87bbc0863
+#8 exporting manifest list sha256:ce0098557d4e7a7809629e8b5a0b1ba2cb7b063ee3360093f056b6f87bbc0863 0.0s done
+#8 naming to docker.io/library/business-licence-renewal:ci-30 0.0s done
+#8 unpacking to docker.io/library/business-licence-renewal:ci-30
+#8 unpacking to docker.io/library/business-licence-renewal:ci-30 0.5s done
+#8 DONE 1.3s
+[8mha:////4AMarBDq5PrvkJMY9cXNbbWFN0u57h9Tue2z7dnX2+i+AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCEB2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwhQ7nffWr7BlDdbXS+AAAA[0m[Pipeline] }
+[8mha:////4M0Cl5R3Ekr0rOemXPClMpd19gG/AuVI/MrwjDNWMJhmAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJShAYhqrRWGl5gYmOcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThwM9poGS7Gz6N1o8sKJw3B1PGHPF+yYIjuNrZ5aVrpZsOWkYUlRwkrARlPnOFoyCbailw9ZOUmmOqeQv6OA0qo7PKEQ2ZxkSF+YA+xuo4pMP89fAczeJyj3da768AGWIKyJvgAAAA==[0m[Pipeline] // stage
+[8mha:////4Adyd4Fp9jxq8isHMr+q+BnnW2IAPjfyi//MNWGjn79iAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BKWgpeYTTpEBCVLSWG15gYmOcWHfBvpBUvIiv8QcMkajYamel1TxfUKUIB4pOdBZ7j6n1Ygijy01MFPtLoEl0dBYtYaJghbKTImOPCypiC0uKElYS1hbbQMmjY9jITt91HTS6+sQxb3sJpTc3eEAhs5l15C/MEbbX0STCn+evAOaBodgxlE3zOVZvwBuZksEAAAA=[0m[Pipeline] stage
+[8mha:////4N2H3Fz5VMi4BVcFS7In6pgUItL/kIdfEUlHLVuuvp8dAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0KRNiYo2ycILQhJA0+r9NUtKJE3E17kBLJSY8WLYl673eUMUAJwqGOY2dxdha1vvRzIllCt3NU2aOrqwljOQ1EzoLUvq8VkFJw6qihA2HrcbWU7RoEuy4kw9Ze4mmvqQwb0cOpVUDPKHgMznJkL5lCrC/jyoS/jh/ATD1CcqmWeywPKsPIshjPcIAAAA=[0m[Pipeline] { (Deploy to Docker)
+[8mha:////4Kwb0p79b8vCRFt0/OmL8RhilOeoVdF2Hy+0jJnOwwiZAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOLSAA2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyu3uU/vwBj0vY+u+AAAA[0m[Pipeline] bat
+
+C:\Users\SHRAVNI\.jenkins\workspace\BusinessLicenceRenewal-Pipeline>powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-docker.ps1 -Image business-licence-renewal:ci-30 
+Waiting for application: 1
+Waiting for application: 2
+Waiting for application: 3
+Docker deployment passed: business-licence-renewal:ci-30
+http://127.0.0.1:8085/business-licence-renewal/health
+[8mha:////4La1zSj7lQSeQR94zcfB8fwYuHb5i8+6dfaxbSpFKK5JAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOLSgCgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N2y4ylS+AAAA[0m[Pipeline] }
+[8mha:////4ACTtL3jyHBV5jyl3JF3qRBUeAcEWhbuWabQoCfQIHQxAAAApB+LCAAAAAAAAP9tjTESwiAURH/iWNhaegjSpHDGsbJlaDwBJogQ5n8CRFJ5Iq/mHUQzY+UWO/u2ec8XrGOAIwXNrMLBYOwM827SZbFMYbg6yszShXWEkZxiQmVBvTotKCgpWFLVsOKwUdg5igZ1gi238i4bJ1E35xTKd+BQm36EB1S8mJMM6QtzgN1t6iPhz/NXALP3Cep2/6n2DS86m9K+AAAA[0m[Pipeline] // stage
+[8mha:////4PETcsjykivPg2R1trMPiNL14bVn4lEAwPV5mInYO+9yAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYTTUIAQFa3lhheY2Bgn1l2wLyQVL+Jr/IFAJCq22llpNc8XlDnBgZKXjcM2YK6D7GLvpyYHSu0l0iAbOsuaMFN0UrtBk3XHGTWxgzmigIWCpcM6Ug7oGVaqMXdTRYO+OnGatr2CItgbPECoycwm8RfGBOtrbzPhz/NXAGPHILYMxWb3OZZvHggHLsEAAAA=[0m[Pipeline] stage
+[8mha:////4B9d24MtMbakofQcC3e4ZYCZ2ImJJvJnMuXFRA4VmWxQAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoiUAQaEOrFGXThBaEJIGv1fkpR04kRcjTsQqMSEB8u2ZL3nC6rgoSGvmVXYGwydYYMbdU4ske8vjhKzdGYdYSCnWKtSS1Id59pSVDCrKGHBYamwcxQM6ggrbsVd1E6grk/R5+3AoTTyBg8oeCZH4eO3TB7W11EGwh/nLwCmIUK53WfbbT7P6g0iH00AwgAAAA==[0m[Pipeline] { (Publish to Docker Hub)
+[8mha:////4Mt3CUOrzvr8VSVRcryCagBsteYMi95pTSwJZx3djv4lAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUBibE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5AfdrPt52fxAW2++SvCAAAA[0m[Pipeline] withCredentials
+Masking supported pattern matches of %HUB_TOKEN%
+[8mha:////4O4WZrmaAnt0/6xkDeTof6QE73CH18we7iEX7HBzDBjqAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUIDEhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYL8sJttPz+LDwMT42zCAAAA[0m[Pipeline] {
+[8mha:////4Ek/tLSaADiyLvE9zDn2yo3j/e/PfGy5l+AVm8N0S508AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIigagQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUO63n9qFN1+P256+AAAA[0m[Pipeline] powershell
+Publishing to Docker Hub (attempt 1 of 5)...
+The push refers to repository [docker.io/shravniu/business-licence-renewal]
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Waiting
+4e07a0f12b2c: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+06ad70e463aa: Layer already exists
+4e07a0f12b2c: Waiting
+ffef58b983c1: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Waiting
+4e07a0f12b2c: Waiting
+ffef58b983c1: Waiting
+4e07a0f12b2c: Waiting
+ffef58b983c1: Waiting
+7cf04eabf4e7: Waiting
+44136fa355b3: Already exists
+4411437139e9: Waiting
+7cf04eabf4e7: Waiting
+4411437139e9: Waiting
+4e07a0f12b2c: Waiting
+ffef58b983c1: Waiting
+7cf04eabf4e7: Waiting
+4411437139e9: Waiting
+4e07a0f12b2c: Waiting
+ffef58b983c1: Waiting
+ffef58b983c1: Waiting
+7cf04eabf4e7: Waiting
+cb3511313ef0: Waiting
+4411437139e9: Waiting
+4e07a0f12b2c: Layer already exists
+7f43d7041661: Waiting
+7cf04eabf4e7: Waiting
+cb3511313ef0: Waiting
+4411437139e9: Layer already exists
+7b5b1cd28d30: Waiting
+ffef58b983c1: Layer already exists
+cb3511313ef0: Waiting
+7b5b1cd28d30: Waiting
+7f43d7041661: Waiting
+7b5b1cd28d30: Layer already exists
+76a87423aaa3: Waiting
+7f43d7041661: Waiting
+cb3511313ef0: Layer already exists
+4f4fb700ef54: Waiting
+4f4fb700ef54: Waiting
+76a87423aaa3: Waiting
+7f43d7041661: Layer already exists
+4f4fb700ef54: Waiting
+76a87423aaa3: Waiting
+76a87423aaa3: Layer already exists
+7fa92b8f25d7: Waiting
+4f4fb700ef54: Waiting
+7fa92b8f25d7: Waiting
+4f4fb700ef54: Layer already exists
+f97ed882bd98: Waiting
+7fa92b8f25d7: Waiting
+f97ed882bd98: Waiting
+7fa92b8f25d7: Waiting
+f97ed882bd98: Waiting
+7fa92b8f25d7: Layer already exists
+f97ed882bd98: Waiting
+f97ed882bd98: Waiting
+7cf04eabf4e7: Pushed
+f97ed882bd98: Waiting
+f97ed882bd98: Pushed
+ci-30: digest: sha256:ce0098557d4e7a7809629e8b5a0b1ba2cb7b063ee3360093f056b6f87bbc0863 size: 856
+Published successfully to Docker Hub on attempt 1: shravniu/business-licence-renewal:ci-30
+[8mha:////4LqsjIB6k5Ve95F8YNRhKCXR8yAFZREyhm/E0zDz54jPAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiIagQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcr97lPbN5RlVvO+AAAA[0m[Pipeline] }
+[8mha:////4GAgg2CM6qBPEFzlRLGROMygLDvrNk6d9a6SSe3v4c0QAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiilSIitZKwwtMYowd686xHZyKF/E1/kAgEhVbrHa2mecL1jHAkYNGq6g3FFuD3o16Xpg59FfHGS1fsGWK7BQ2KjfcqdOCDScFS4oSVgI2ilrH0ZBOsBVW3mXlJOnqnML8HQSUphvgAYWYzUmG9IUpwO42dpHp5/krgMn7BGVdf2r/BovnA6G+AAAA[0m[Pipeline] // withCredentials
+[8mha:////4PpVP6T8ieZiZ5t0zEzx3oaOk06ePnmf7Ggl4LDtdn7FAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJCAw2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwhQ7nbf2r7BrOlkFC+AAAA[0m[Pipeline] }
+[8mha:////4CFpUblgpxkowxGo6fi1kMikmhXeSWUHu8S7ksGvMa5JAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOLSgBBCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw/z/wv7vgAAAA==[0m[Pipeline] // stage
+[8mha:////4Hg17Xr9zPvpPlHedL2tyntXC7Um1XFlksGRkDo7fWe4AAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYRTIUVCVLSWG15gEmOcWHfBvpBUvIiv8QcMkajYamel1TxfUKYIB4pOdhZ7j6nxcgijy01OFPtLoEl2dJYNYaJgpbaTptYeF9TEFpaIAlYK1habQMmjY9ioztxNFQy66sQxb3sFhW9v8AChsplN5C/MEbbXsU2EP89fAcwDg6gZil39OZZvD9AsQ8EAAAA=[0m[Pipeline] stage
+[8mha:////4POBTtAkVXigmwaKu1BIyw1b+S6ugO+ImbNGU/Earr9ZAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0QgIhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD0XdaX3CAAAA[0m[Pipeline] { (Deploy to Tomcat)
+Stage "Deploy to Tomcat" skipped due to when conditional
+[8mha:////4PX7bpe43LBvhKSW8biq70B/hjYsMkgUc24KoNHyFyk9AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJCAxJCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKYhQrk75Npvhw8/Nre1vgAAAA==[0m[Pipeline] getContext
+[8mha:////4Ab2qm3xcJRDFHP/hD06l14V5YsJG9YjModdkD5MNcyTAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiCpAQSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryv821O3wAMjehBb4AAAA=[0m[Pipeline] }
+[8mha:////4Mb+muxoQdCf1Yx14DTQcjmvSi66tu4CWDiKUAnmVgKRAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiIYGQUCpayw0vMIkxTqy7YDs4FS/ia/wBi0hUbLHa2WZeb1gGDzV7g52m3lJoLA5uNHlhYt9fHSfs+IINU2CnUeokudWnGSVHDXOKEhYCVpoax8GSibAWnXqoyiky1Tn6/B0FlLa9wxMKkc1R+fiFycPmNraB6ef5K4BpGCKU+22u3eEDCnUy9L4AAAA=[0m[Pipeline] // stage
+[8mha:////4D0+ul89GZVNuO96YfZp59HegORjNuNKREBvZLt6LzEKAAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYRTICEkREVrueEFJjbGiXUX7AtJxYv4Gn8gEImKrXZWWs3zBWVOcKDkZeOwDZjrILvY+6nJgVJ7iTTIhs6yJswUndRu0GTdcUZN7GCOKGChYOmwjpQDeoaVaszdVNGgr06cpm2voAj2Bg8QajKzSfyFMcH62ttM+PP8FcDYMYgdQ7HdfI7lG1E6AxjBAAAA[0m[Pipeline] stage
+[8mha:////4CFAM8fN7ECYVzMPEAOIFWeNIShrCV3ZVHyMLyw6Ro26AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0ALEgpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYL8sJttPz+LD7KBoKTCAAAA[0m[Pipeline] { (Declarative: Post Actions)
+[8mha:////4B7XmK14ic1RykgeYd6fPM7OvGNx8GNbwM2kWAf1qhi2AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOLSAA2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyv32U7vwBlmkmCe+AAAA[0m[Pipeline] echo
+Pipeline completed successfully.
+[8mha:////4J5voVb2FbpB3D1uKQ0bgIGV6L1GLwBEdr6CKCELcpHhAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOLSoDSIitZKwwtMYowd686xHZyKF/E1/kAgEhVbrHa2mecL1jHAkYNGq6g3FFuD3o16Xpg59FfHGS1fsGWK7BQ2KjfcqdOCDScFS4oSVgI2ilrH0ZBOsBVW3mXlJOnqnML8HQSUphvgAYWYzUmG9IUpwO42dpHp5/krgMn7BGVdf2r/BvQoOE2+AAAA[0m[Pipeline] }
+[8mha:////4AxDIdbm6paU8hPwuFegOiyR5kFSFBj+Wnh5seJNMvIjAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSIEGBqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFDu9p/avgHybgAYvgAAAA==[0m[Pipeline] // stage
+[8mha:////4CfWgc3Ba0BuznEHe+3KnA+oH0KRtgw+4ixWd1eIA/gRAAAAox+LCAAAAAAAAP9tjbEOgjAURS8YB1dHP6JshsQ4uTYsfkGFWgvNe9g+hMkv8tf8B4kkTt7pnrOc1xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0g35eCrPwA1xyG9r0AAAA=[0m[Pipeline] }
+[8mha:////4HOtcciuQWs3LUgDf1SA+wXncvTkTLMSEYZfhs75CDJkAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMLpQAhR0VppeIFJjHFi3QX7QlLxIr7GH4iIRMVWO9PM641lijhydKqx1HpKlVdd6N301MCxvQYeVMMXVTElDlaVdii5tqcZSxaLeVmOhcbKUhU4eXKCtW7MwxTBkCvOEid30Mh9fccTmZ7KYqJ8YYzY3Po6Mf06fwMYu06Qb/eCbPcB9ihZW70AAAA=[0m[Pipeline] // timeout
+[8mha:////4J/53VSswScb83L5+GeLp/BmuXfD1aQnKDoA38bpxItFAAAAox+LCAAAAAAAAP9tjTESgjAQRT84FraWHiJYaeFY2WZoPEGEGAOZXUwWofJEXs07yMiMlb/67zXv9cYyRRw5OtVYaj2lyqsu9G56auDYXgMPquGLqpgSB6tKO5Rc29OMJYvFvCzHQmNlqQqcPDnBWjfmYYpgyBVniZM7aOS+vuOJTE9lMVG+MEZsbn2dmH6dvwGMXSfI91tBtvsAtKkS6r0AAAA=[0m[Pipeline] }
+[8mha:////4AM1L5wi7w3n5tyP5ko3Ft2tfgJlz0LJ7bhzritrKkXAAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIRBaJAVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5PutINt9AL7Re069AAAA[0m[Pipeline] // withEnv
+[8mha:////4FbNdXSlK2kYaUB/q2V10C0xUeSIpIh4/KlG2Aetyr+SAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKREBIFoqK10vACkxjjxLoL9oWk4kV8jT8QEYmKrXammdcbyxRx5OhUY6n1lCqvutC76amBY3sNPKiGL6piShysKu1Qcm1PM5YsFvOyHAuNlaUqcPLkBGvdmIcpgiFXnCVO7qCR+/qOJzI9lcVE+cIYsbn1dWL6df4GMHadIN9vBdnuA/ib3H69AAAA[0m[Pipeline] }
+[8mha:////4GeFaTABIfLDIYZtOFM1T6silGb7jbaR/Onb8FbrnPIDAAAAox+LCAAAAAAAAP9tjTESgjAQRT84FraWHiIUFBaOlW2GxhNEiDGQ2cVkESpP5NW8g4zMWPmr/17zXm+sU8SRo1Otpc5Tqr3qw+Dmp0aO3TXwqFq+qJopcbCqsmPFjT0tWLFYLMtyrDQ2lurAyZMTbHVrHqYIhlxxlji7g0bumzueyPRcFhPlC1PE7jY0ienX+RvA1PeCfF8KsvID6yfY3b0AAAA=[0m[Pipeline] // node
+[8mha:////4BCJepZ34sX0sfNIPTcmSr1wFFTR1MX9UPBM/MTOHPJ1AAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKREBIFoqK10vACkxjjxLoL9oWk4kV8jT8QEYmKrXammdcbyxRx5OhUY6n1lCqvutC76amBY3sNPKiGL6piShysKu1Qcm1PM5YsFvOyHAuNlaUqcPLkBGvdmIcpgiFXnCVO7qCR+/qOJzI9lcVE+cIYsbn1dWL6df4GMHadIN/vBNn2A23L/xi9AAAA[0m[Pipeline] End of Pipeline
+Finished: SUCCESS

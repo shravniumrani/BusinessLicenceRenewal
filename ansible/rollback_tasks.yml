@@ -1,0 +1,39 @@
+---
+- name: Inspect previous healthy WAR backup
+  ansible.builtin.stat:
+    path: "{{ backup_dir }}/{{ app_war }}.stable"
+    checksum_algorithm: sha256
+  register: stable
+- name: Require a real backup before stopping Tomcat
+  ansible.builtin.assert:
+    that:
+      - stable.stat.exists
+      - stable.stat.size | default(0) > 0
+    fail_msg: No previous healthy WAR is available; rollback cannot be claimed.
+- name: Stop Tomcat for recovery
+  ansible.builtin.command: /usr/local/bin/licence-service stop
+- name: Remove candidate expanded application
+  ansible.builtin.file:
+    path: "{{ tomcat_home }}/webapps/business-licence-renewal"
+    state: absent
+- name: Restore previous healthy WAR
+  ansible.builtin.copy:
+    src: "{{ backup_dir }}/{{ app_war }}.stable"
+    dest: "{{ tomcat_home }}/webapps/{{ app_war }}"
+    remote_src: true
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: '0644'
+- name: Start restored Tomcat
+  ansible.builtin.command: /usr/local/bin/licence-service start
+- name: Verify restored application health
+  ansible.builtin.include_tasks: health.yml
+- name: Read restored WAR checksum
+  ansible.builtin.stat:
+    path: "{{ tomcat_home }}/webapps/{{ app_war }}"
+    checksum_algorithm: sha256
+  register: restored
+- name: Verify exact restoration
+  ansible.builtin.assert:
+    that: restored.stat.checksum == stable.stat.checksum
+    success_msg: ROLLBACK VERIFIED - exact previous WAR restored and HTTP health is UP.

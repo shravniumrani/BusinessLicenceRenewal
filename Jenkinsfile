@@ -5,7 +5,7 @@ pipeline {
         skipDefaultCheckout(true)
         disableConcurrentBuilds()
         skipStagesAfterUnstable()
-        timeout(time: 15, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
 
@@ -63,7 +63,7 @@ pipeline {
             }
         }
 
-                 stage('Selenium Tests') {
+        stage('Selenium Tests') {
             steps {
                 bat '''
                     powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\run-selenium.ps1 -TomcatHome "%TOMCAT_HOME%" -JavaHome "%JAVA_HOME%"
@@ -95,14 +95,95 @@ pipeline {
                 '''
             }
         }
-                stage('Deploy to Docker') {
+        stage('Deploy to Docker') {
             steps {
                 bat '''
                     powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-docker.ps1 -Image business-licence-renewal:ci-%BUILD_NUMBER%
                 '''
             }
         }
-stage('Deploy to Tomcat') {
+        stage('Publish to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-verified',
+                    usernameVariable: 'HUB_USER',
+                    passwordVariable: 'HUB_TOKEN'
+                )]) {
+                    powershell '''
+                        $ErrorActionPreference = 'Stop'
+                        $docker = Join-Path $env:ProgramFiles 'Docker/Docker/resources/bin/docker.exe'
+                        $source = "business-licence-renewal:ci-$env:BUILD_NUMBER"
+                        $target = "shravniu/business-licence-renewal:ci-$env:BUILD_NUMBER"
+                        $config = Join-Path $env:TEMP ([Guid]::NewGuid().ToString('N'))
+
+                        if ($env:HUB_USER.Trim() -cne 'shravniu') {
+                            throw 'Docker Hub username must be shravniu.'
+                        }
+                        if ([string]::IsNullOrWhiteSpace($env:HUB_TOKEN)) {
+                            throw 'Docker Hub token is empty.'
+                        }
+
+                        $engine = & $docker context inspect --format '{{.Endpoints.docker.Host}}'
+                        if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace("$engine")) {
+                            throw 'Cannot find Docker engine.'
+                        }
+                        $engine = "$engine".Trim()
+                        New-Item -ItemType Directory -Path $config | Out-Null
+
+                        try {
+                            $pair = $env:HUB_USER.Trim() + ':' + $env:HUB_TOKEN.Trim()
+                            $auth = [Convert]::ToBase64String(
+                                [Text.Encoding]::UTF8.GetBytes($pair)
+                            )
+                            $settings = @{
+                                auths = @{
+                                    'https://index.docker.io/v1/' = @{
+                                        auth = $auth
+                                    }
+                                }
+                            } | ConvertTo-Json -Depth 5
+
+                            [IO.File]::WriteAllText(
+                                (Join-Path $config 'config.json'),
+                                $settings,
+                                (New-Object Text.UTF8Encoding($false))
+                            )
+
+                            $ErrorActionPreference = 'Continue'
+                            & $docker --host "$engine" --config "$config" tag $source $target
+                            if ($LASTEXITCODE -ne 0) {
+                                throw 'Docker image tagging failed.'
+                            }
+
+                            # Push with retry loop to handle transient proxy/handshake resets
+                            $maxRetries = 5
+                            $pushed = $false
+                            for ($attempt = 1; $attempt -le $maxRetries; $attempt++) {
+                                Write-Host "Publishing to Docker Hub (attempt $attempt of $maxRetries)..."
+                                & $docker --host "$engine" --config "$config" push $target
+                                if ($LASTEXITCODE -eq 0) {
+                                    $pushed = $true
+                                    Write-Host "Published successfully to Docker Hub on attempt ${attempt}: $target"
+                                    break
+                                }
+                                Write-Warning "Docker Hub push attempt $attempt failed (exit code $LASTEXITCODE). Retrying in 5 seconds..."
+                                Start-Sleep -Seconds 5
+                            }
+                            if (-not $pushed) {
+                                throw "Docker Hub push failed after $maxRetries attempts."
+                            }
+                        } finally {
+                            Remove-Item -LiteralPath $config -Recurse -Force -ErrorAction Stop
+                            $pair = $null
+                            $auth = $null
+                            $settings = $null
+                        }
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy to Tomcat') {
             when {
                 expression { params.DEPLOY_TO_TOMCAT }
             }
@@ -159,5 +240,3 @@ stage('Deploy to Tomcat') {
         }
     }
 }
-
-

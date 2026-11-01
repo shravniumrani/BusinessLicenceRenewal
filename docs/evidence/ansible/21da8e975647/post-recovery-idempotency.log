@@ -1,0 +1,72 @@
+﻿
+PLAY [Configure real Tomcat and deploy with automatic recovery] ****************
+
+TASK [Ensure required operating system packages] *******************************
+ok: [target-node]
+
+TASK [Create dedicated Tomcat group] *******************************************
+ok: [target-node]
+
+TASK [Create dedicated Tomcat user] ********************************************
+ok: [target-node]
+
+TASK [Assign Tomcat tree to service user] **************************************
+ok: [target-node]
+
+TASK [Create restricted state directories] *************************************
+ok: [target-node] => (item=/var/lib/licence)
+ok: [target-node] => (item=/opt/licence-backups)
+ok: [target-node] => (item=/usr/local/tomcat/temp)
+ok: [target-node] => (item=/usr/local/tomcat/work)
+
+TASK [Configure Tomcat application environment] ********************************
+ok: [target-node]
+
+TASK [Install real Tomcat service control] *************************************
+ok: [target-node]
+
+TASK [Inspect candidate WAR] ***************************************************
+ok: [target-node]
+
+TASK [Require candidate artifact] **********************************************
+ok: [target-node] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Inspect currently installed WAR] *****************************************
+ok: [target-node]
+
+TASK [Set deployment change decision] ******************************************
+ok: [target-node]
+
+TASK [Require existing release to be healthy before taking backup] *************
+skipping: [target-node]
+
+TASK [Save actual previous healthy WAR before replacement] *********************
+skipping: [target-node]
+
+TASK [Stop Tomcat before changed deployment] ***********************************
+skipping: [target-node]
+
+TASK [Remove old expanded application only on change] **************************
+skipping: [target-node]
+
+TASK [Deploy WAR artifact] *****************************************************
+ok: [target-node]
+
+TASK [Inspect Tomcat process] **************************************************
+ok: [target-node]
+
+TASK [Start real Tomcat if required] *******************************************
+skipping: [target-node]
+
+TASK [Verify deployed application] *********************************************
+included: /ansible/health.yml for target-node
+
+TASK [Verify actual application HTTP health] ***********************************
+ok: [target-node]
+
+PLAY RECAP *********************************************************************
+target-node                : ok=15   changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

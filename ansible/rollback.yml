@@ -1,0 +1,6 @@
+---
+- name: Restore previous healthy release and verify it
+  hosts: licence_servers
+  gather_facts: false
+  tasks:
+    - ansible.builtin.include_tasks: rollback_tasks.yml

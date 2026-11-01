@@ -1,0 +1,163 @@
+﻿
+PLAY [Configure real Tomcat and deploy with automatic recovery] ****************
+
+TASK [Ensure required operating system packages] *******************************
+ok: [target-node]
+
+TASK [Create dedicated Tomcat group] *******************************************
+ok: [target-node]
+
+TASK [Create dedicated Tomcat user] ********************************************
+ok: [target-node]
+
+TASK [Assign Tomcat tree to service user] **************************************
+ok: [target-node]
+
+TASK [Create restricted state directories] *************************************
+ok: [target-node] => (item=/var/lib/licence)
+ok: [target-node] => (item=/opt/licence-backups)
+ok: [target-node] => (item=/usr/local/tomcat/temp)
+ok: [target-node] => (item=/usr/local/tomcat/work)
+
+TASK [Configure Tomcat application environment] ********************************
+ok: [target-node]
+
+TASK [Install real Tomcat service control] *************************************
+ok: [target-node]
+
+TASK [Inspect candidate WAR] ***************************************************
+ok: [target-node]
+
+TASK [Require candidate artifact] **********************************************
+ok: [target-node] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Inspect currently installed WAR] *****************************************
+ok: [target-node]
+
+TASK [Set deployment change decision] ******************************************
+ok: [target-node]
+
+TASK [Require existing release to be healthy before taking backup] *************
+included: /ansible/health.yml for target-node
+
+TASK [Verify actual application HTTP health] ***********************************
+ok: [target-node]
+
+TASK [Save actual previous healthy WAR before replacement] *********************
+changed: [target-node]
+
+TASK [Stop Tomcat before changed deployment] ***********************************
+changed: [target-node]
+
+TASK [Remove old expanded application only on change] **************************
+changed: [target-node]
+
+TASK [Deploy WAR artifact] *****************************************************
+changed: [target-node]
+
+TASK [Inspect Tomcat process] **************************************************
+ok: [target-node]
+
+TASK [Start real Tomcat if required] *******************************************
+changed: [target-node]
+
+TASK [Verify deployed application] *********************************************
+included: /ansible/health.yml for target-node
+
+TASK [Verify actual application HTTP health] ***********************************
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (30 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (29 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (28 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (27 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (26 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (25 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (24 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (23 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (22 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (21 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (20 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (19 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (18 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (17 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (16 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (15 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (14 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (13 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (12 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (11 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (10 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (9 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (8 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (7 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (6 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (5 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (4 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (3 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (2 retries left).
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (1 retries left).
+[ERROR]: Task failed: Module failed: Status code was 404 and not [200]: HTTP Error 404: 
+Origin: /ansible/health.yml:2:3
+
+1 ---
+2 - name: Verify actual application HTTP health
+    ^ column 3
+
+fatal: [target-node]: FAILED! => {"attempts": 30, "changed": false, "connection": "close", "content": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 ΓÇô Not Found</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 404 ΓÇô Not Found</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Description</b> The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.</p><hr class=\"line\" /><h3>Apache Tomcat/10.1.60</h3></body></html>", "content_language": "en", "content_length": "683", "content_type": "text/html;charset=utf-8", "date": "Sun, 01 Nov 2026 08:16:06 GMT", "elapsed": 0, "msg": "Status code was 404 and not [200]: HTTP Error 404: ", "redirected": false, "status": 404, "url": "http://127.0.0.1:8080/business-licence-renewal/health"}
+
+TASK [Recover previous healthy release] ****************************************
+included: /ansible/rollback_tasks.yml for target-node
+
+TASK [Inspect previous healthy WAR backup] *************************************
+ok: [target-node]
+
+TASK [Require a real backup before stopping Tomcat] ****************************
+ok: [target-node] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Stop Tomcat for recovery] ************************************************
+changed: [target-node]
+
+TASK [Remove candidate expanded application] ***********************************
+ok: [target-node]
+
+TASK [Restore previous healthy WAR] ********************************************
+changed: [target-node]
+
+TASK [Start restored Tomcat] ***************************************************
+changed: [target-node]
+
+TASK [Verify restored application health] **************************************
+included: /ansible/health.yml for target-node
+
+TASK [Verify actual application HTTP health] ***********************************
+FAILED - RETRYING: [target-node]: Verify actual application HTTP health (30 retries left).
+ok: [target-node]
+
+TASK [Read restored WAR checksum] **********************************************
+ok: [target-node]
+
+TASK [Verify exact restoration] ************************************************
+ok: [target-node] => {
+    "changed": false,
+    "msg": "ROLLBACK VERIFIED - exact previous WAR restored and HTTP health is UP."
+}
+
+TASK [Keep rejected deployment marked as failure after successful recovery] ****
+[ERROR]: Task failed: Action failed: CANDIDATE REJECTED - previous healthy release restored. Deployment remains failed.
+Origin: /ansible/playbook.yml:141:11
+
+139         - name: Recover previous healthy release
+140           ansible.builtin.include_tasks: rollback_tasks.yml
+141         - name: Keep rejected deployment marked as failure after successful recovery
+              ^ column 11
+
+fatal: [target-node]: FAILED! => {"changed": false, "msg": "CANDIDATE REJECTED - previous healthy release restored. Deployment remains failed."}
+
+PLAY RECAP *********************************************************************
+target-node                : ok=31   changed=8    unreachable=0    failed=1    skipped=0    rescued=1    ignored=0   
+

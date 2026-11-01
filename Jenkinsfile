@@ -163,7 +163,7 @@ pipeline {
                                 & $docker --host "$engine" --config "$config" push $target
                                 if ($LASTEXITCODE -eq 0) {
                                     $pushed = $true
-                                    Write-Host "Published successfully to Docker Hub on attempt $attempt: $target"
+                                    Write-Host "Published successfully to Docker Hub on attempt ${attempt}: $target"
                                     break
                                 }
                                 Write-Warning "Docker Hub push attempt $attempt failed (exit code $LASTEXITCODE). Retrying in 5 seconds..."

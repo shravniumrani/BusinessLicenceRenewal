@@ -1,0 +1,9 @@
+﻿{
+  "status": "UP",
+  "service": "Business Licence Renewal System",
+  "version": "0.1.0-SNAPSHOT",
+  "timestamp": "2026-11-01T08:16:25.486325373Z",
+  "javaVersion": "21.0.12.1",
+  "javaVendor": "Eclipse Adoptium",
+  "os": "Linux"
+}

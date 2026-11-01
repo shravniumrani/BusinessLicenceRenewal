@@ -1,0 +1,143 @@
+---
+- name: Configure real Tomcat and deploy with automatic recovery
+  hosts: licence_servers
+  gather_facts: false
+  vars:
+    artifact: /payload/deploy.war
+  tasks:
+    - name: Ensure required operating system packages
+      ansible.builtin.apt:
+        name: [python3, curl, util-linux]
+        state: present
+        update_cache: false
+    - name: Create dedicated Tomcat group
+      ansible.builtin.group:
+        name: "{{ tomcat_group }}"
+        system: true
+    - name: Create dedicated Tomcat user
+      ansible.builtin.user:
+        name: "{{ tomcat_user }}"
+        group: "{{ tomcat_group }}"
+        system: true
+        shell: /usr/sbin/nologin
+        create_home: false
+    - name: Assign Tomcat tree to service user
+      ansible.builtin.file:
+        path: "{{ tomcat_home }}"
+        state: directory
+        recurse: true
+        owner: "{{ tomcat_user }}"
+        group: "{{ tomcat_group }}"
+    - name: Create restricted state directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ tomcat_user }}"
+        group: "{{ tomcat_group }}"
+        mode: '0750'
+      loop:
+        - "{{ data_dir }}"
+        - "{{ backup_dir }}"
+        - "{{ tomcat_home }}/temp"
+        - "{{ tomcat_home }}/work"
+    - name: Configure Tomcat application environment
+      ansible.builtin.copy:
+        dest: "{{ tomcat_home }}/bin/setenv.sh"
+        content: |
+          #!/bin/sh
+          export LICENCE_DATA_DIR={{ data_dir }}
+          export CATALINA_PID={{ tomcat_home }}/temp/catalina.pid
+          export CATALINA_OPTS="-Xms64m -Xmx256m"
+        owner: "{{ tomcat_user }}"
+        group: "{{ tomcat_group }}"
+        mode: '0750'
+    - name: Install real Tomcat service control
+      ansible.builtin.copy:
+        dest: /usr/local/bin/licence-service
+        mode: '0755'
+        content: |
+          #!/bin/sh
+          set -eu
+          export CATALINA_HOME={{ tomcat_home }}
+          export CATALINA_PID={{ tomcat_home }}/temp/catalina.pid
+          case "${1:-}" in
+            status) test -s "$CATALINA_PID" || exit 1
+                    pid=$(cat "$CATALINA_PID")
+                    case "$pid" in ''|*[!0-9]*) exit 1 ;; esac
+                    state=$(awk '{print $3}' "/proc/$pid/stat" 2>/dev/null) || exit 1
+                    test "$state" != Z && kill -0 "$pid" 2>/dev/null ;;
+            start) if "$0" status; then exit 0; fi
+                   rm -f "$CATALINA_PID"
+                   runuser -u {{ tomcat_user }} -- "$CATALINA_HOME/bin/catalina.sh" start ;;
+            stop) if "$0" status; then
+                    runuser -u {{ tomcat_user }} -- "$CATALINA_HOME/bin/catalina.sh" stop 15 -force
+                  fi
+                  for attempt in $(seq 1 40); do
+                    if ! "$0" status; then break; fi
+                    sleep 0.25
+                  done
+                  if "$0" status; then echo "Tomcat did not stop" >&2; exit 1; fi
+                  rm -f "$CATALINA_PID" ;;
+            *) exit 2 ;;
+          esac
+    - name: Inspect candidate WAR
+      ansible.builtin.stat:
+        path: "{{ artifact }}"
+        checksum_algorithm: sha256
+      register: candidate
+    - name: Require candidate artifact
+      ansible.builtin.assert:
+        that: candidate.stat.exists
+    - name: Inspect currently installed WAR
+      ansible.builtin.stat:
+        path: "{{ tomcat_home }}/webapps/{{ app_war }}"
+        checksum_algorithm: sha256
+      register: current
+    - name: Set deployment change decision
+      ansible.builtin.set_fact:
+        deploy_needed: "{{ not current.stat.exists or (current.stat.checksum | default('')) != candidate.stat.checksum }}"
+    - name: Require existing release to be healthy before taking backup
+      ansible.builtin.include_tasks: health.yml
+      when: current.stat.exists and deploy_needed | bool
+    - name: Save actual previous healthy WAR before replacement
+      ansible.builtin.copy:
+        src: "{{ tomcat_home }}/webapps/{{ app_war }}"
+        dest: "{{ backup_dir }}/{{ app_war }}.stable"
+        remote_src: true
+        owner: "{{ tomcat_user }}"
+        group: "{{ tomcat_group }}"
+        mode: '0644'
+      when: current.stat.exists and deploy_needed | bool
+    - name: Deploy candidate and recover automatically on failure
+      block:
+        - name: Stop Tomcat before changed deployment
+          ansible.builtin.command: /usr/local/bin/licence-service stop
+          when: deploy_needed | bool
+        - name: Remove old expanded application only on change
+          ansible.builtin.file:
+            path: "{{ tomcat_home }}/webapps/business-licence-renewal"
+            state: absent
+          when: deploy_needed | bool
+        - name: Deploy WAR artifact
+          ansible.builtin.copy:
+            src: "{{ artifact }}"
+            dest: "{{ tomcat_home }}/webapps/{{ app_war }}"
+            owner: "{{ tomcat_user }}"
+            group: "{{ tomcat_group }}"
+            mode: '0644'
+        - name: Inspect Tomcat process
+          ansible.builtin.command: /usr/local/bin/licence-service status
+          register: process_state
+          changed_when: false
+          failed_when: false
+        - name: Start real Tomcat if required
+          ansible.builtin.command: /usr/local/bin/licence-service start
+          when: process_state.rc != 0
+        - name: Verify deployed application
+          ansible.builtin.include_tasks: health.yml
+      rescue:
+        - name: Recover previous healthy release
+          ansible.builtin.include_tasks: rollback_tasks.yml
+        - name: Keep rejected deployment marked as failure after successful recovery
+          ansible.builtin.fail:
+            msg: CANDIDATE REJECTED - previous healthy release restored. Deployment remains failed.
